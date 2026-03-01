@@ -1,479 +1,305 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TravelGo</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link referrerpolicy="stylesheet" href="style/style.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Kufi+Arabic:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+NZ+Basic:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<title>Document</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+/* ================= GENERAL ================= */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Noto Kufi Arabic",sans-serif;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;}
+
+/* ================= NAVBAR ================= */
+.navbar-custom{background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);}
+.navbar-brand span{color:#ffd166;}
+.navbar-nav .nav-link{color:#fff;font-weight:500;position:relative;transition:.3s;}
+.navbar-nav .nav-link:hover,.navbar-nav .nav-link.active{color:#ffd166;}
+.navbar-nav .nav-link::after{content:"";position:absolute;width:0;height:2px;background:#ffd166;left:0;bottom:-6px;transition:.3s;}
+.navbar-nav .nav-link:hover::after{width:100%;}
+.btn-custom{background:linear-gradient(45deg,#ffd166,#fca311);color:#000;font-weight:bold;border:none;transition:.3s;}
+.btn-custom:hover{background:linear-gradient(45deg,#fca311,#ffd166);transform:scale(1.05);}
+
+/* ================= HERO ================= */
+.hero-section{min-height:90vh;display:flex;align-items:center;
+background: linear-gradient(rgba(13,110,253,0.75), rgba(72,202,228,0.75)), url("https://images.unsplash.com/photo-1501785888041-af3ef285b470") center/cover no-repeat;}
+.hero-section h1{font-size:3rem;color:#fff;}
+.hero-section h1 span{color:#ffd166;}
+.hero-section p{font-size:1.1rem;max-width:520px;color:#f8f9fa;}
+.hero-features{list-style:none;padding:0;}
+.hero-features li{margin-bottom:8px;color:#fff;}
+
+/* Stats Boxes */
+.stat-box{background:rgba(255,255,255,0.25);backdrop-filter:blur(10px);padding:25px;border-radius:16px;text-align:center;color:#fff;transition:.3s;}
+.stat-box h3{color:#ffd166;font-weight:bold;margin-bottom:5px;}
+.stat-box:hover{transform:translateY(-6px);background:rgba(255,255,255,0.35);}
+
+/* ================= DESTINATIONS ================= */
+.destinations-section{background:#f8f9fa;}
+.destination-card{border:none;border-radius:15px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition:.3s;cursor:pointer;}
+.destination-card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(0,0,0,0.2);}
+.destination-card .card-body h5{font-weight:600;margin-bottom:0.5rem;}
+.destination-card .card-body p{font-size:0.95rem;color:#495057;}
+
+/* ================= TESTIMONIALS ================= */
+.testimonials-section{background:#f8f9fa;}
+.testimonial-card{background:#fff;border-radius:20px;padding:30px;box-shadow:0 10px 20px rgba(220,218,241,0.05);transition:.3s;}
+.testimonial-card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,0.1);}
+.testimonial-card p{font-style:italic;color:#495057;}
+
+/* ================= FEATURES ================= */
+.feature-card{background:#fff;border-radius:20px;padding:40px 20px;transition:.3s;}
+.feature-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.15);}
+.feature-card i{color:#fca311;}
+.feature-card h5{margin-top:15px;margin-bottom:10px;}
+.feature-card p{color:#495057;font-size:0.95rem;}
+
+/* ================= NEWSLETTER ================= */
+.newsletter-section{background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);color:#fff;}
+.newsletter-section input.form-control{border-radius:50px;border:none;padding:10px 20px;}
+.newsletter-section .btn-custom{border-radius:50px;}
+
+/* ================= FOOTER ================= */
+.footer-section{background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);color:#fff;}
+.footer-section h3 span{color:#ffd166;}
+.footer-section p{color:#f8f9fa;}
+.footer-links li{margin-bottom:10px;}
+.footer-links li a{color:#f8f9fa;transition:.3s;}
+.footer-links li a:hover{color:#ffd166;}
+.social-icon{color:#fff;font-size:1.25rem;transition:.3s;}
+.social-icon:hover{color:#ffd166;}
+
+/* ================= REVEAL ANIMATION ================= */
+.reveal{opacity:0;transform:translateY(50px);transition:all .8s ease;}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+.hero-section h1{font-size:2.2rem;}
+.footer-section{text-align:center;}
+.footer-section .d-flex{justify-content:center;}
+}
+</style>
 </head>
 <body>
-   
+
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom py-3">
   <div class="container">
-
-    <!-- Logo -->
-    <a class="navbar-brand fw-bold fs-3" href="#">
-      Travel<span>Go</span>
-    </a>
-
-    <!-- Toggler -->
+    <a class="navbar-brand fw-bold fs-3" href="#">Travel<span>Go</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Menu -->
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-4">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Trips</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Offers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
+    <div class="collapse navbar-collapse justify-content-center" id="navMenu">
+      <ul class="navbar-nav mb-2 mb-lg-0 text-center">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Trips</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
       </ul>
-
-      <!-- Button -->
-      <a href="#" class="btn btn-custom rounded-pill px-4">
-        Book Now
-      </a>
+      <div class="w-100 text-center mt-3 mt-lg-0">
+        <a href="#" class="btn btn-custom rounded-pill px-4">Book Now</a>
+      </div>
     </div>
-
   </div>
 </nav>
 
-     
-
-<!-- Hero Section -->
-<section class="hero-section d-flex align-items-center">
+<!-- ================= HERO ================= -->
+<section class="hero-section d-flex align-items-center reveal" style="padding:60px 0; background:#0f2a4d; color:white;">
   <div class="container">
     <div class="row align-items-center">
 
-      <!-- Text -->
+      <!-- النص -->
       <div class="col-lg-6 text-white">
-        <h1 class="fw-bold mb-3">
-          Explore the World <br>
-          <span>Your Way</span>
+        <h1 class="fw-bold mb-3" style="font-size:3rem; line-height:1.2;">
+          Explore the World <br><span style="color:#4fc3f7;">Your Way</span>
         </h1>
-
-        <p class="mb-4">
-          We help you discover the world with carefully planned trips, exclusive offers,
-          and unforgettable travel experiences tailored just for you.
+        <p class="mb-4" style="font-size:1.1rem;">
+          We help you discover the world with carefully planned trips, exclusive offers, and unforgettable travel experiences tailored just for you.
         </p>
-
-        <!-- Features -->
-        <ul class="hero-features mb-4">
-          <li>✔ Customized Travel Packages</li>
-          <li>✔ Best Prices & Special Offers</li>
-          <li>✔ Trusted Guides & 24/7 Support</li>
+        <ul class="hero-features mb-4" style="list-style:none; padding:0;">
+          <li style="margin-bottom:10px;">✔ Customized Travel Packages</li>
+          <li style="margin-bottom:10px;">✔ Best Prices & Special Offers</li>
+          <li style="margin-bottom:10px;">✔ Trusted Guides & 24/7 Support</li>
         </ul>
 
-        <!-- Buttons -->
-        <a href="#" class="btn btn-custom rounded-pill px-4 me-2">
-          Get Started
-        </a>
-        <a href="#" class="btn btn-outline-light rounded-pill px-4">
-          View Trips
-        </a>
+        <!-- الأزرار -->
+        <div class="d-flex flex-column flex-sm-row gap-2">
+          <a href="#" class="btn btn-custom rounded-pill px-4" style="background:#ff77ff; color:white;">Get Started</a>
+          <a href="#" class="btn btn-outline-light rounded-pill px-4" style="border:2px solid #4fc3f7; color:#4fc3f7;">View Trips</a>
+        </div>
       </div>
 
-      <!-- Image + Stats -->
-      <div class="col-lg-6 mt-5 mt-lg-0">
-        <div class="row g-3">
-
-          <div class="col-6">
-            <div class="stat-box">
-              <h3>120+</h3>
-              <p>Destinations</p>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="stat-box">
-              <h3>10K+</h3>
-              <p>Happy Travelers</p>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="stat-box">
-              <h3>500+</h3>
-              <p>Successful Trips</p>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="stat-box">
-              <h3>24/7</h3>
-              <p>Customer Support</p>
-            </div>
-          </div>
-
-        </div>
+      <!-- الصورة -->
+      <div class="col-lg-6 mt-4 mt-lg-0">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Travel" 
+             style="width:100%; border-radius:20px; object-fit:cover; max-height:450px;">
       </div>
 
     </div>
   </div>
 </section>
 
+<!-- تحسين النصوص والأزرار على الشاشات الصغيرة -->
+<style>
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+  .hero-section p {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .hero-section ul {
+    text-align: center;
+  }
+  .hero-section .d-flex.flex-column.flex-sm-row {
+    align-items: center;
+    justify-content: center;
+  }
+}
+</style>
 
-
-<!-- Popular Destinations Section -->
-<section class="destinations-section py-5">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">Popular Destinations</h2>
-      <p>Explore our top travel destinations around the world.</p>
+<!-- ================= DESTINATIONS ================= -->
+<section class="destinations-section py-5 reveal">
+<div class="container">
+<div class="text-center mb-5">
+<h2 class="fw-bold">Popular Destinations</h2>
+<p>Explore our top travel destinations around the world.</p>
+</div>
+<div class="row g-4">
+<!-- Cards -->
+<div class="col-md-6 col-lg-4"><div class="card destination-card"><img src=
+  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt=""><div class="card-body"><h5>Maldives</h5><p>Relax on white sandy beaches and turquoise waters.</p></div></div></div>
+<div class="col-md-6 col-lg-4"><div class="card destination-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt=""><div class="card-body"><h5>Paris</h5><p>Experience the city of love, fashion, and fine dining.</p></div></div></div>
+<div class="col-md-6 col-lg-4"><div class="card destination-card"><img 
+  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="">
+  <div class="card-body"><h5>Tokyo</h5><p>Discover vibrant city life and
+     traditional culture.</p></div></div>
     </div>
-
-    <div class="row g-4">
-
-      <!-- Card 1 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card destination-card">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" class="card-img-top" alt="Maldives">
-          <div class="card-body">
-            <h5 class="card-title">Maldives</h5>
-            <p class="card-text">Relax on white sandy beaches and turquoise waters.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card destination-card">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" class="card-img-top" alt="Maldives">
-        
-          <div class="card-body">
-            <h5 class="card-title">Paris</h5>
-            <p class="card-text">Experience the city of love, fashion, and fine dining.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card destination-card">
-          <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff" class="card-img-top" alt="Tokyo">
-          <div class="card-body">
-            <h5 class="card-title">Tokyo</h5>
-            <p class="card-text">Discover vibrant city life and traditional culture.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card destination-card">
-          <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad" class="card-img-top" alt="New York">
-          <div class="card-body">
-            <h5 class="card-title">New York</h5>
-            <p class="card-text">The city that never sleeps, full of iconic landmarks.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card destination-card">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="card-img-top" alt="Bali">
-          <div class="card-body">
-            <h5 class="card-title">Bali</h5>
-            <p class="card-text">Explore tropical paradise with rice terraces and beaches.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card destination-card">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="card-img-top" alt="Bali">
-    
-          <div class="card-body">
-            <h5 class="card-title">Dubai</h5>
-            <p class="card-text">Luxury, modern architecture, and desert adventures.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
+</div>
+</div>
 </section>
 
-
-<!-- Booking CTA Section -->
-
-
-<!-- Booking Section with Dynamic Price -->
-<section class="booking-only-section py-5">
-  <div class="container">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Book Your Flight</h2>
-      <p>Fill the details below to reserve your trip instantly.</p>
-    </div>
-
-    <div class="booking-form-wrapper mx-auto p-4 rounded-4 shadow-lg" style="max-width: 700px;">
-      <form id="bookingForm" class="row g-3">
-
-        <!-- Destination -->
-        <div class="col-md-6">
-          <label for="destination" class="form-label fw-semibold">Destination</label>
-          <select class="form-select" id="destination">
-            <option selected disabled>Select a destination</option>
-            <option value="Paris" data-price="450">Paris</option>
-            <option value="Tokyo" data-price="780">Tokyo</option>
-            <option value="New York" data-price="600">New York</option>
-            <option value="Dubai" data-price="520">Dubai</option>
-            <option value="Bali" data-price="690">Bali</option>
-            <option value="Maldives" data-price="850">Maldives</option>
-          </select>
-        </div>
-
-        <!-- Departure Date -->
-        <div class="col-md-6">
-          <label for="departure" class="form-label fw-semibold">Departure</label>
-          <input type="date" class="form-control" id="departure">
-        </div>
-
-        <!-- Return Date -->
-        <div class="col-md-6">
-          <label for="return" class="form-label fw-semibold">Return</label>
-          <input type="date" class="form-control" id="return">
-        </div>
-
-        <!-- Passengers -->
-        <div class="col-md-6">
-          <label for="passengers" class="form-label fw-semibold">Passengers</label>
-          <input type="number" class="form-control" id="passengers" min="1" value="1">
-        </div>
-
-        <!-- Price Display -->
-        <div class="col-12 text-center mt-2">
-          <h5>Total Price: $<span id="totalPrice">0</span></h5>
-        </div>
-
-        <!-- Book Button -->
-        <div class="col-12 d-grid mt-3">
-          <button type="submit" class="btn btn-custom rounded-pill py-2">Book Now</button>
-        </div>
-
-      </form>
-    </div>
-  </div>
+<!-- ================= BOOKING ================= -->
+<section class="booking-only-section py-5 reveal">
+<div class="container text-center mb-4"><h2 class="fw-bold">Book Your Flight</h2><p>Fill the details below to reserve your trip instantly.</p></div>
+<div class="booking-form-wrapper mx-auto p-4 rounded-4 shadow-lg" style="max-width:700px;">
+<form id="bookingForm" class="row g-3">
+<div class="col-md-6">
+<label>Destination</label>
+<select id="destination" class="form-select">
+<option disabled selected>Select a destination</option>
+<option value="Paris" data-price="450">Paris</option>
+<option value="Tokyo" data-price="780">Tokyo</option>
+<option value="New York" data-price="600">New York</option>
+<option value="Dubai" data-price="520">Dubai</option>
+<option value="Bali" data-price="690">Bali</option>
+<option value="Maldives" data-price="850">Maldives</option>
+</select>
+</div>
+<div class="col-md-6"><label>Departure</label><input type="date" id="departure" class="form-control"></div>
+<div class="col-md-6"><label>Return</label><input type="date" id="return" class="form-control"></div>
+<div class="col-md-6"><label>Passengers</label><input type="number" id="passengers" value="1" min="1" class="form-control"></div>
+<div class="col-12 mt-2"><h5>Total Price: $<span id="totalPrice">0</span></h5></div>
+<div class="col-12 d-grid mt-3"><button type="submit" class="btn btn-custom rounded-pill py-2">Book Now</button></div>
+</form>
+</div>
 </section>
 
-<!-- Testimonials Section -->
-<section class="testimonials-section py-5 bg-light">
+<!-- ================= CONTENT SECTION ================= -->
+<section class="content-section py-5 reveal">
   <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">What Our Travelers Say</h2>
-      <p>Real feedback from our happy customers around the world.</p>
-    </div>
-
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="testimonial-card p-4 rounded-4 shadow-sm text-center">
-          <p>"Amazing experience! Everything was perfectly organized."</p>
-          <h6 class="fw-bold mt-3">Sarah L.</h6>
-          <small>Traveler from USA</small>
-        </div>
+    <div class="row align-items-center g-4">
+      <!-- Image -->
+      <div class="col-lg-6">
+        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff" alt="Travel Adventure" class="img-fluid rounded-4 shadow-sm">
       </div>
-      <div class="col-md-4">
-        <div class="testimonial-card p-4 rounded-4 shadow-sm text-center">
-          <p>"Highly recommend TravelGo! Great prices and support."</p>
-          <h6 class="fw-bold mt-3">Ahmed K.</h6>
-          <small>Traveler from Egypt</small>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="testimonial-card p-4 rounded-4 shadow-sm text-center">
-          <p>"The guides were excellent, and the trip was unforgettable."</p>
-          <h6 class="fw-bold mt-3">Maria P.</h6>
-          <small>Traveler from Spain</small>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Features Section -->
-<section class="features-section py-5">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">Why Choose TravelGo?</h2>
-      <p>Experience top-notch travel services with our dedicated team.</p>
-    </div>
-
-    <div class="row g-4 text-center">
-      <div class="col-md-4">
-        <div class="feature-card p-4 rounded-4 shadow-sm">
-          <i class="bi bi-globe2 fs-1 mb-3 text-warning"></i>
-          <h5 class="fw-bold">Worldwide Destinations</h5>
-          <p>Explore over 120 destinations worldwide with tailored packages.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="feature-card p-4 rounded-4 shadow-sm">
-          <i class="bi bi-currency-dollar fs-1 mb-3 text-warning"></i>
-          <h5 class="fw-bold">Best Price Guarantee</h5>
-          <p>Get exclusive deals and competitive pricing for your trips.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="feature-card p-4 rounded-4 shadow-sm">
-          <i class="bi bi-headset fs-1 mb-3 text-warning"></i>
-          <h5 class="fw-bold">24/7 Customer Support</h5>
-          <p>Our team is available anytime to assist you before and during your trip.</p>
-        </div>
+      <!-- Text -->
+      <div class="col-lg-6">
+        <h2 class="fw-bold mb-3">Discover Hidden Gems</h2>
+        <p class="mb-3">
+          TravelGo helps you explore destinations off the beaten path. 
+          Our expert guides curate unique experiences for travelers seeking adventure, culture, and serenity.
+        </p>
+        <p>
+          From remote islands to vibrant city streets, we provide the insights, tips, and services to make your trip unforgettable.
+        </p>
+        <a href="#" class="btn btn-custom rounded-pill px-4 mt-3">Learn More</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- From Uiverse.io by bhaveshxrawat --> 
 
-<!-- Travel FAQ / Features Accordion -->
-<section class="accordion-section py-5">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">Travel FAQs & Features</h2>
-      <p>Everything you need to know about booking and traveling with TravelGo.</p>
-    </div>
 
-    <div class="accordion" id="travelAccordion">
 
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            How do I book a customized travel package?
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#travelAccordion">
-          <div class="accordion-body">
-            Choose your destination, travel dates, and number of travelers using our booking form. Our team will tailor a package that fits your needs, including hotels, tours, and activities.
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Are there special offers or discounts for group bookings?
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#travelAccordion">
-          <div class="accordion-body">
-            Yes! We offer exclusive deals for groups and families. Contact our support team for customized offers and promotions for large bookings.
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Do you provide travel guides or local assistance?
-          </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#travelAccordion">
-          <div class="accordion-body">
-            Absolutely! Our certified guides will assist you throughout your trip, offering local insights, safety advice, and recommendations to enhance your experience.
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFour">
-          <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-            What is the cancellation or refund policy?
-          </button>
-        </h2>
-        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#travelAccordion">
-          <div class="accordion-body">
-            You can cancel or modify your booking according to our flexible travel policy. Refunds are processed based on your selected package terms. Always contact our support team for details.
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFive">
-          <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-            How do I know about travel safety during my trip?
-          </button>
-        </h2>
-        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#travelAccordion">
-          <div class="accordion-body">
-            We provide real-time travel updates, safety tips, and local health guidelines. Your safety is our priority, and our team is available 24/7 to assist with any emergencies.
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- Newsletter Section -->
-<section class="newsletter-section py-5 text-center">
-  <div class="container">
-    <h2 class="fw-bold mb-3">Subscribe to Our Newsletter</h2>
-    <p class="mb-4">Get the latest travel deals, tips, and offers straight to your inbox.</p>
-    
-    <div class="d-flex justify-content-center">
-      <input type="email" class="form-control me-2" placeholder="Enter your email" style="max-width: 300px;">
-      <button class="btn btn-custom px-4">Subscribe</button>
-    </div>
-  </div>
-</section>
-
-<!-- Footer Section -->
-<footer class="footer-section py-5">
-  <div class="container">
-    <div class="row">
-
-      <!-- Logo & About -->
-      <div class="col-md-4 mb-4">
-        <h3 class="fw-bold mb-3">Travel<span>Go</span></h3>
-        <p>Explore the world with carefully planned trips, exclusive offers, and unforgettable experiences tailored for you.</p>
-      </div>
-
-      <!-- Quick Links -->
-      <div class="col-md-4 mb-4">
-        <h5 class="fw-bold mb-3">Quick Links</h5>
-        <ul class="list-unstyled footer-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Trips</a></li>
-          <li><a href="#">Offers</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Social & Contact -->
-      <div class="col-md-4 mb-4">
-        <h5 class="fw-bold mb-3">Connect with Us</h5>
-        <div class="d-flex gap-3 mb-3">
-          <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
-          <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
-        </div>
-        <p class="mb-0">© 2026 TravelGo. All Rights Reserved.</p>
-      </div>
-
-    </div>
-  </div>
+<!-- ================= FOOTER ================= -->
+<footer class="footer-section py-5 reveal">
+<div class="container"><div class="row">
+<div class="col-md-4 mb-4"><h3>Travel<span>Go</span></h3><p>Explore the world with carefully planned trips, exclusive offers, and unforgettable experiences tailored for you.</p></div>
+<div class="col-md-4 mb-4"><h5>Quick Links</h5><ul class="list-unstyled footer-links"><li><a href="#">Home</a></li><li><a href="#">Trips</a></li><li><a href="#">Offers</a></li><li><a href="#">About Us</a></li><li><a href="#">Contact</a></li></ul></div>
+<div class="col-md-4 mb-4"><h5>Connect with Us</h5><div class="d-flex gap-3 mb-3"><a href="#" class="social-icon"><i class="bi bi-facebook"></i></a><a href="#" class="social-icon"><i class="bi bi-twitter"></i></a><a href="#" class="social-icon"><i class="bi bi-instagram"></i></a><a href="#" class="social-icon"><i class="bi bi-youtube"></i></a></div><p>© 2026 TravelGo. All Rights Reserved.</p></div>
+</div></div>
 </footer>
-<script src="script/script.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ================= BOOKING PRICE =================
+const destinationSelect = document.getElementById('destination');
+const passengersInput = document.getElementById('passengers');
+const totalPriceSpan = document.getElementById('totalPrice');
+const bookingForm = document.getElementById('bookingForm');
+
+function updatePrice(){
+  const selectedOption = destinationSelect.options[destinationSelect.selectedIndex];
+  const pricePerPerson = selectedOption ? parseInt(selectedOption.dataset.price || 0) : 0;
+  const passengers = parseInt(passengersInput.value) || 1;
+  totalPriceSpan.textContent = pricePerPerson*passengers;
+}
+
+destinationSelect.addEventListener('change',updatePrice);
+passengersInput.addEventListener('input',updatePrice);
+
+bookingForm.addEventListener('submit',function(e){
+e.preventDefault();
+const destination = destinationSelect.value;
+const departure = document.getElementById('departure').value;
+const returnDate = document.getElementById('return').value;
+const passengers = passengersInput.value;
+const totalPrice = totalPriceSpan.textContent;
+if(!destination || !departure || !returnDate || passengers<1){alert('Please fill all fields');return;}
+alert(`Booking Confirmed!\nDestination: ${destination}\nDeparture: ${departure}\nReturn: ${returnDate}\nPassengers: ${passengers}\nTotal Price: $${totalPrice}`);
+});
+
+// ================= REVEAL ANIMATION =================
+const reveals = document.querySelectorAll(".reveal");
+window.addEventListener("scroll", () => {
+reveals.forEach(el => {
+const windowHeight = window.innerHeight;
+const elementTop = el.getBoundingClientRect().top;
+const triggerPoint = window.innerWidth<768 ? 50 : 100;
+if(elementTop < windowHeight - triggerPoint){el.classList.add("active");}
+});
+});
+</script>
+
 </body>
 </html>
-
-

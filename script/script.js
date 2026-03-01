@@ -33,3 +33,23 @@ bookingForm.addEventListener('submit', function (e) {
 
   alert(`Booking Confirmed!\nDestination: ${destination}\nDeparture: ${departure}\nReturn: ${returnDate}\nPassengers: ${passengers}\nTotal Price: $${totalPrice}`);
 });
+
+
+
+
+
+  const reveals = document.querySelectorAll(".reveal");
+
+  window.addEventListener("scroll", () => {
+    reveals.forEach(el => {
+      const windowHeight = window.innerHeight;
+      const elementTop = el.getBoundingClientRect().top;
+
+      // لو الشاشة صغيرة، نخلي التفعيل أقرب
+      const triggerPoint = window.innerWidth < 768 ? 50 : 100;
+
+      if (elementTop < windowHeight - triggerPoint) {
+        el.classList.add("active");
+      }
+    });
+  });

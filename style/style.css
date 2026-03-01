@@ -7,92 +7,72 @@
   font-style: normal;
 
 }
-/* Navbar Gradient Background */
-.navbar-custom {
-  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-}
+/* collapse navbar-collapse */
 
-/* Logo */
-.navbar-brand span {
-  color: #ffd166;
-}
 
-/* Navbar Links */
-.navbar-nav .nav-link {
-  color: #ffffff;
-  font-weight: 500;
-  position: relative;
-  transition: 0.3s ease;
-}
 
-.navbar-nav .nav-link:hover {
-  color: #ffd166;
-}
+/* ================= Navbar Mobile Center ================= */
+@media (max-width: 768px) {
+  /* Navbar collapse */
+  .navbar-collapse {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center; /* يوسّط كل المحتوى */
+    text-align: center; /* نصوص كل العناصر في الوسط */
+    gap: 15px; /* مسافة بين العناصر */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s ease;
+  }
 
-/* Underline Hover Effect */
-.navbar-nav .nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: #ffd166;
-  left: 0;
-  bottom: -6px;
-  transition: 0.3s ease;
-}
+  /* عندما يفتح الـ navbar */
+  .navbar-collapse.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-.navbar-nav .nav-link:hover::after {
-  width: 100%;
-}
+  /* شعار في النص */
+  .navbar-brand {
+    display: block;
+    margin: 0 auto 15px auto;
+    text-align: center;
+  }
 
-/* Active Link */
-.navbar-nav .nav-link.active {
-  color: #ffd166;
-}
+  /* روابط Navbar عمودية ومتوسطه */
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px !important;
+    margin-bottom: 10px;
+    text-align: center;
+  }
 
-/* Custom Button */
-.btn-custom {
-  background: linear-gradient(45deg, #ffd166, #fca311);
-  color: #000;
-  font-weight: bold;
-  border: none;
-  transition: 0.3s ease;
-}
+  /* كل رابط في النص */
+  .navbar-nav .nav-link {
+    text-align: center !important;
+    display: block;
+    width: 100%; /* يخلي الرابط يملأ الصف */
+    transition: 0.3s;
+  }
 
-.btn-custom:hover {
-  background: linear-gradient(45deg, #fca311, #ffd166);
-  color: #000;
-  transform: scale(1.05);
-}
+  .navbar-nav .nav-link:hover {
+    color: #ffd166;
+    transform: scale(1.05);
+  }
 
+  /* زر Book Now في الوسط */
+  .btn-custom {
+    display: block;
+    margin: 0 auto 10px auto;
+    text-align: center;
+  }
+
+  /* Toggler في النص */
+  .navbar-toggler {
+    margin: 0 auto 10px auto;
+  }
+}
 /***********/
-
-/* Hero Section – Light & Fresh */
-.hero-section {
-  min-height: 90vh;
-  background: linear-gradient(
-    rgba(13, 110, 253, 0.75),
-    rgba(72, 202, 228, 0.75)
-  ),
-  url("https://images.unsplash.com/photo-1501785888041-af3ef285b470")
-  center/cover no-repeat;
-}
-
-/* Text */
-.hero-section h1 {
-  font-size: 3rem;
-  color: #ffffff;
-}
-
-.hero-section h1 span {
-  color: #ffd166;
-}
-
-.hero-section p {
-  font-size: 1.1rem;
-  max-width: 520px;
-  color: #f8f9fa;
-}
 
 /* Features */
 .hero-features {
@@ -307,3 +287,92 @@
     justify-content: center;
   }
 }
+
+/* ================= CONTENT SECTION ================= */
+.content-section img {
+  max-width: 100%;
+  border-radius: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.content-section img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+.content-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.content-section p {
+  font-size: 1rem;
+  color: #495057;
+}
+@media(max-width:768px){
+  .content-section h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .content-section p {
+    text-align: center;
+  }
+  .content-section .btn-custom {
+    display: block;
+    margin: 1rem auto 0 auto;
+  }
+}
+
+
+
+/* From Uiverse.io by bhaveshxrawat */ 
+.card {
+  width: 190px;
+  height: 254px;
+  background: #07182E;
+  position: relative;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.card h2 {
+  z-index: 1;
+  color: white;
+  font-size: 2em;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+  height: 130%;
+  animation: rotBGimg 3s linear infinite;
+  transition: all 0.2s linear;
+}
+
+@keyframes rotBGimg {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  background: #07182E;
+  ;
+  inset: 5px;
+  border-radius: 15px;
+}  
+/* .card:hover:before {
+  background-image: linear-gradient(180deg, rgb(81, 255, 0), purple);
+  animation: rotBGimg 3.5s linear infinite;
+} */
+
+
+
