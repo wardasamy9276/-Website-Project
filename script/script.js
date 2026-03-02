@@ -1,55 +1,80 @@
+const accordionItems = document.querySelectorAll('.accordion-item');
 
-const destinationSelect = document.getElementById('destination');
-const passengersInput = document.getElementById('passengers');
-const totalPriceSpan = document.getElementById('totalPrice');
-const bookingForm = document.getElementById('bookingForm');
-
-// Update total price
-function updatePrice() {
-  const selectedOption = destinationSelect.options[destinationSelect.selectedIndex];
-  const pricePerPerson = selectedOption ? parseInt(selectedOption.dataset.price || 0) : 0;
-  const passengers = parseInt(passengersInput.value) || 1;
-  totalPriceSpan.textContent = pricePerPerson * passengers;
-}
-
-// Event listeners
-destinationSelect.addEventListener('change', updatePrice);
-passengersInput.addEventListener('input', updatePrice);
-
-// Form submission
-bookingForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const destination = destinationSelect.value;
-  const departure = document.getElementById('departure').value;
-  const returnDate = document.getElementById('return').value;
-  const passengers = passengersInput.value;
-  const totalPrice = totalPriceSpan.textContent;
-
-  if (!destination || !departure || !returnDate || passengers < 1) {
-    alert('Please fill in all the fields correctly.');
-    return;
-  }
-
-  alert(`Booking Confirmed!\nDestination: ${destination}\nDeparture: ${departure}\nReturn: ${returnDate}\nPassengers: ${passengers}\nTotal Price: $${totalPrice}`);
+accordionItems.forEach(item => {
+  item.addEventListener('click', () => {
+    // إغلاق جميع العناصر الأخرى
+    accordionItems.forEach(i => {
+      if (i !== item) i.classList.remove('active');
+    });
+    // فتح أو غلق العنصر الحالي
+    item.classList.toggle('active');
+  });
 });
 
 
 
+const form = document.getElementById('contactForm');
+const msg = document.getElementById('formMessage');
+
+// تحميل البيانات من LocalStorage عند فتح الصفحة
+window.addEventListener('load', () => {
+  const savedData = JSON.parse(localStorage.getItem('contactFormData'));
+  if (savedData) {
+    form.name.value = savedData.name || '';
+    form.email.value = savedData.email || '';
+    form.phone.value = savedData.phone || '';
+    form.guests.value = savedData.guests || '';
+    form.date.value = savedData.date || '';
+    form.message.value = savedData.message || '';
+  }
+});
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  // حفظ البيانات في LocalStorage
+  const formData = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    guests: form.guests.value,
+    date: form.date.value,
+    message: form.message.value
+  };
+  localStorage.setItem('contactFormData', JSON.stringify(formData));
+
+  msg.style.display = 'block';
+  // مش هنعمل reset عشان تبقى البيانات موجودة بعد الريفرش
+});
 
 
-  const reveals = document.querySelectorAll(".reveal");
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
 
-  window.addEventListener("scroll", () => {
-    reveals.forEach(el => {
-      const windowHeight = window.innerHeight;
-      const elementTop = el.getBoundingClientRect().top;
-
-      // لو الشاشة صغيرة، نخلي التفعيل أقرب
-      const triggerPoint = window.innerWidth < 768 ? 50 : 100;
-
-      if (elementTop < windowHeight - triggerPoint) {
-        el.classList.add("active");
-      }
-    });
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
   });
+});
+
+// ===== Registration Form JS =====
+const registrationForm = document.getElementById('registrationForm');
+const registrationMsg = document.getElementById('registrationMessage');
+
+registrationForm.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const regData = {
+    fullname: registrationForm.fullname.value,
+    email: registrationForm.email.value,
+    phone: registrationForm.phone.value,
+    role: registrationForm.role.value,
+    startDate: registrationForm.startDate.value,
+    startTime: registrationForm.startTime.value,
+    notes: registrationForm.notes.value
+  };
+
+  localStorage.setItem('registrationData', JSON.stringify(regData));
+
+  registrationMsg.style.display = 'block';
+});

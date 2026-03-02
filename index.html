@@ -1,305 +1,606 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>TravelGo</title>
-
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link referrerpolicy="stylesheet" href="style/style.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet">
-
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Bootstrap Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
+<title>SphinxTrail Tours</title>
+<link rel="stylesheet" href="style/style.css">
 <style>
-/* ================= GENERAL ================= */
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Noto Kufi Arabic",sans-serif;}
-img{max-width:100%;display:block;}
-a{text-decoration:none;}
+/* ===== Reset & Base ===== */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Noto Kufi Arabic', sans-serif; }
+body { line-height:1.6; color:#333; scroll-behavior:smooth; }
+.container { width:90%; margin:auto; }
 
-/* ================= NAVBAR ================= */
-.navbar-custom{background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);}
-.navbar-brand span{color:#ffd166;}
-.navbar-nav .nav-link{color:#fff;font-weight:500;position:relative;transition:.3s;}
-.navbar-nav .nav-link:hover,.navbar-nav .nav-link.active{color:#ffd166;}
-.navbar-nav .nav-link::after{content:"";position:absolute;width:0;height:2px;background:#ffd166;left:0;bottom:-6px;transition:.3s;}
-.navbar-nav .nav-link:hover::after{width:100%;}
-.btn-custom{background:linear-gradient(45deg,#ffd166,#fca311);color:#000;font-weight:bold;border:none;transition:.3s;}
-.btn-custom:hover{background:linear-gradient(45deg,#fca311,#ffd166);transform:scale(1.05);}
-
-/* ================= HERO ================= */
-.hero-section{min-height:90vh;display:flex;align-items:center;
-background: linear-gradient(rgba(13,110,253,0.75), rgba(72,202,228,0.75)), url("https://images.unsplash.com/photo-1501785888041-af3ef285b470") center/cover no-repeat;}
-.hero-section h1{font-size:3rem;color:#fff;}
-.hero-section h1 span{color:#ffd166;}
-.hero-section p{font-size:1.1rem;max-width:520px;color:#f8f9fa;}
-.hero-features{list-style:none;padding:0;}
-.hero-features li{margin-bottom:8px;color:#fff;}
-
-/* Stats Boxes */
-.stat-box{background:rgba(255,255,255,0.25);backdrop-filter:blur(10px);padding:25px;border-radius:16px;text-align:center;color:#fff;transition:.3s;}
-.stat-box h3{color:#ffd166;font-weight:bold;margin-bottom:5px;}
-.stat-box:hover{transform:translateY(-6px);background:rgba(255,255,255,0.35);}
-
-/* ================= DESTINATIONS ================= */
-.destinations-section{background:#f8f9fa;}
-.destination-card{border:none;border-radius:15px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition:.3s;cursor:pointer;}
-.destination-card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(0,0,0,0.2);}
-.destination-card .card-body h5{font-weight:600;margin-bottom:0.5rem;}
-.destination-card .card-body p{font-size:0.95rem;color:#495057;}
-
-/* ================= TESTIMONIALS ================= */
-.testimonials-section{background:#f8f9fa;}
-.testimonial-card{background:#fff;border-radius:20px;padding:30px;box-shadow:0 10px 20px rgba(220,218,241,0.05);transition:.3s;}
-.testimonial-card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,0.1);}
-.testimonial-card p{font-style:italic;color:#495057;}
-
-/* ================= FEATURES ================= */
-.feature-card{background:#fff;border-radius:20px;padding:40px 20px;transition:.3s;}
-.feature-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.15);}
-.feature-card i{color:#fca311;}
-.feature-card h5{margin-top:15px;margin-bottom:10px;}
-.feature-card p{color:#495057;font-size:0.95rem;}
-
-/* ================= NEWSLETTER ================= */
-.newsletter-section{background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);color:#fff;}
-.newsletter-section input.form-control{border-radius:50px;border:none;padding:10px 20px;}
-.newsletter-section .btn-custom{border-radius:50px;}
-
-/* ================= FOOTER ================= */
-.footer-section{background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);color:#fff;}
-.footer-section h3 span{color:#ffd166;}
-.footer-section p{color:#f8f9fa;}
-.footer-links li{margin-bottom:10px;}
-.footer-links li a{color:#f8f9fa;transition:.3s;}
-.footer-links li a:hover{color:#ffd166;}
-.social-icon{color:#fff;font-size:1.25rem;transition:.3s;}
-.social-icon:hover{color:#ffd166;}
-
-/* ================= REVEAL ANIMATION ================= */
-.reveal{opacity:0;transform:translateY(50px);transition:all .8s ease;}
-.reveal.active{opacity:1;transform:translateY(0);}
-
-/* ================= RESPONSIVE ================= */
+/* ===== Header ===== */
+.header { background:#FF7F50; color:#fff; padding:15px 0; position:fixed; top:0; width:100%; z-index:1000; }
+.header .container { display:flex; justify-content:space-between; align-items:center; }
+.header .logo { font-size:24px; font-weight:bold; text-decoration:none; color:#fff; }
+.nav { display:flex; gap:20px; }
+.nav a { color:#fff; text-decoration:none; position:relative; }
+.nav a::after { content:''; position:absolute; bottom:-2px;
+ left:0; width:0; height:2px; background:#fff; transition:width 0.3s; }
+.nav a:hover::after { width:100%; }
+.menu-toggle { display:none; font-size:28px; cursor:pointer; }
 @media(max-width:768px){
-.hero-section h1{font-size:2.2rem;}
-.footer-section{text-align:center;}
-.footer-section .d-flex{justify-content:center;}
+  .nav { display:block; flex-direction:column; width:100%; background:#FF7F50; }
+  .nav.show { display:flex; }
+  .menu-toggle { display:block; }
+  .nav a { padding:10px 0; text-align:center; }
+}
+
+/* ===== Hero ===== */
+.hero { position:relative; width:100%; height:100vh; display:flex; justify-content:center; align-items:center; color:#fff; overflow:hidden; }
+.hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter: brightness(0.7); transition:transform 0.5s; }
+.hero:hover .hero-img { transform:scale(1.05); }
+.hero-content { position:relative; text-align:center; z-index:2; max-width:800px; }
+.hero-content h1 { font-size:3rem; margin-bottom:20px; }
+.hero-content p { font-size:1.2rem; margin-bottom:25px; }
+.hero-content .btn { padding:12px 30px; background:#FF7F50; color:#fff; border:none; border-radius:5px; cursor:pointer; transition:0.3s; }
+.hero-content .btn:hover { background:#ff956f; transform:scale(1.05); }
+
+/* ===== Tours ===== */
+.tours-section { background:#f5f7fa; padding:80px 0; }
+.tours-section h2 {display: flex; justify-content: center; align-items: center;color:#212112;padding: 2px;}
+
+
+.tour-cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; max-width:1200px; margin:auto; }
+.tour-card { background:#fff; border-radius:15px; padding:15px;text-align: center; cursor:pointer; transition:0.4s; box-shadow:0 4px 12px rgba(0,0,0,0.1); flex:1 1 23%; }
+.tour-card img { width:100%; height:160px; object-fit:cover; border-radius:12px; transition:0.4s; }
+.tour-card:hover img { transform:scale(1.07); }
+.tour-card h1 { font-size:1.2rem; margin:10px 0; color:#1a237e; text-align: center;}
+.tour-card p { font-size:0.95rem; color:#333; margin-bottom:10px; }
+.tour-card button { padding:8px 20px; background:#FF7F50; color:#fff; border:none; border-radius:5px; cursor:pointer; transition:0.3s; }
+.tour-card button:hover { background:#ff956f; transform:scale(1.05); }
+
+
+/* ===== Team ===== */
+.team-cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+ h2{ display:flex; align-items: center;color:#212112; justify-content:center;padding: 2px; }
+
+.team-card { background:#fff; border-radius:15px; padding:15px; text-align:center; cursor:pointer; transition:0.4s; box-shadow:0 4px 12px rgba(0,0,0,0.1); flex:1 1 23%; }
+.team-card img { width:120px; height:120px; border-radius:50%; margin-bottom:10px; transition:0.4s; }
+.team-card:hover img { transform:scale(1.1); }
+.team-card h4 { font-size:1.1rem; color:#1a237e; margin-bottom:5px; }
+.team-card p { font-size:0.9rem; color:#555; }
+
+/* ===== Luxury Grid ===== */
+.luxury-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; max-width:1300px; margin:auto; }
+.luxury-card { flex:1 1 23%; height:250px; background-size:cover; background-position:center; border-radius:0 0 30px 30px; position:relative; cursor:pointer; overflow:hidden; }
+.luxury-card::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.55); opacity:0; transition:0.4s; }
+.luxury-card:hover::before { opacity:1; }
+.card-overlay { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:#fff; opacity:0; transform:translateY(20px); transition:0.4s; }
+.luxury-card:hover .card-overlay { opacity:1; transform:translateY(0); }
+.card-overlay h1 { color:#d4af37; margin-bottom:8px; font-size:1.2rem; }
+.card-overlay p { font-size:0.9rem; margin-bottom:15px; }
+.card-overlay button { padding:8px 20px; border:1px solid #d4af37; color:#d4af37; border-radius:20px; background:transparent; cursor:pointer; transition:0.3s; }
+.card-overlay button:hover { background:#d4a037; color:#000; }
+
+/* ===== Contact ===== */
+form { display:flex; flex-direction:column; max-width:450px; margin:auto; }
+input, select, textarea { padding:8px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc; transition:0.3s; }
+input:focus, select:focus, textarea:focus { border-color:#FF7F50; }
+button.btn { margin-top:10px; padding:10px 20px; background:#FF7F50; color:#fff; border:none; border-radius:5px; cursor:pointer; transition:0.3s; }
+button.btn:hover { background:#ff956f; transform:scale(1.05); }
+
+/* ===== Footer ===== */
+.footer { text-align:center; padding:25px 0; background:#222; color:#fff; }
+
+/* ===== Responsive ===== */
+@media(max-width:1024px){ .tour-card,.team-card,.luxury-card{flex:1 1 48%;} }
+@media(max-width:768px){ .tour-card,.team-card,.luxury-card{flex:1 1 100%;} }
+@media(max-width:480px){
+  .hero-content h1{font-size:1.8rem;} 
+  .hero-content p{font-size:1rem;}
+  .hero-content .btn{font-size:0.9rem;padding:8px 15px;}
+  .tour-card img{height:140px;}
+  .team-card img{width:90px;height:90px;}
 }
 </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom py-3">
+<!-- HEADER -->
+<!-- HEADER -->
+<header class="header">
   <div class="container">
-    <a class="navbar-brand fw-bold fs-3" href="#">Travel<span>Go</span></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-center" id="navMenu">
-      <ul class="navbar-nav mb-2 mb-lg-0 text-center">
-        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Trips</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-      </ul>
-      <div class="w-100 text-center mt-3 mt-lg-0">
-        <a href="#" class="btn btn-custom rounded-pill px-4">Book Now</a>
-      </div>
-    </div>
+    <a href="#" class="logo">SphinxTrail Tours</a>
+    <div class="menu-toggle">&#9776;</div> <!-- أيقونة الهامبرجر -->
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#tours">Tours</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+        <a href="#services">Services</a>
+      <a href="#reports">Reports</a>
+      <a href="#blogs">Blogs</a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<!-- ================= HERO ================= -->
-<section class="hero-section d-flex align-items-center reveal" style="padding:60px 0; background:#0f2a4d; color:white;">
-  <div class="container">
-    <div class="row align-items-center">
-
-      <!-- النص -->
-      <div class="col-lg-6 text-white">
-        <h1 class="fw-bold mb-3" style="font-size:3rem; line-height:1.2;">
-          Explore the World <br><span style="color:#4fc3f7;">Your Way</span>
-        </h1>
-        <p class="mb-4" style="font-size:1.1rem;">
-          We help you discover the world with carefully planned trips, exclusive offers, and unforgettable travel experiences tailored just for you.
-        </p>
-        <ul class="hero-features mb-4" style="list-style:none; padding:0;">
-          <li style="margin-bottom:10px;">✔ Customized Travel Packages</li>
-          <li style="margin-bottom:10px;">✔ Best Prices & Special Offers</li>
-          <li style="margin-bottom:10px;">✔ Trusted Guides & 24/7 Support</li>
-        </ul>
-
-        <!-- الأزرار -->
-        <div class="d-flex flex-column flex-sm-row gap-2">
-          <a href="#" class="btn btn-custom rounded-pill px-4" style="background:#ff77ff; color:white;">Get Started</a>
-          <a href="#" class="btn btn-outline-light rounded-pill px-4" style="border:2px solid #4fc3f7; color:#4fc3f7;">View Trips</a>
-        </div>
-      </div>
-
-      <!-- الصورة -->
-      <div class="col-lg-6 mt-4 mt-lg-0">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Travel" 
-             style="width:100%; border-radius:20px; object-fit:cover; max-height:450px;">
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- تحسين النصوص والأزرار على الشاشات الصغيرة -->
 <style>
-@media (max-width: 768px) {
-  .hero-section h1 {
-    font-size: 2.2rem;
-    text-align: center;
+.header {
+  background:#FF7F50;
+  color:#fff;
+  padding:15px 0;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+}
+.header .container {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 20px;
+}
+.header .logo {
+  font-size:24px;
+  font-weight:bold;
+  color:#fff;
+  text-decoration:none;
+}
+
+/* Nav */
+.nav {
+  display:flex;
+  gap:20px;
+}
+.nav a {
+  color:#fff;
+  text-decoration:none;
+  position:relative;
+}
+.nav a::after {
+  content:'';
+  position:absolute;
+  bottom:-2px;
+  left:0;
+  width:0;
+  height:2px;
+  background:#fff;
+  transition:width 0.3s;
+}
+.nav a:hover::after { width:100%; }
+
+/* Hamburger */
+.menu-toggle {
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+  z-index:1001;
+}
+
+/* ===== Mobile ===== */
+@media(max-width:768px){
+  .menu-toggle { display:block; }
+  .nav {
+    display:none; /* مخفية افتراضياً */
+    flex-direction:column;
+    width:100%;
+    background:#FF7F50;
+    text-align:center;
+    padding:10px 0;
+    position:absolute;
+    top:100%;
+    left:0;
   }
-  .hero-section p {
-    font-size: 1rem;
-    text-align: center;
-  }
-  .hero-section ul {
-    text-align: center;
-  }
-  .hero-section .d-flex.flex-column.flex-sm-row {
-    align-items: center;
-    justify-content: center;
-  }
+  .nav.show { display:flex; }
+  .nav a { padding:10px 0; font-size:18px; font-weight:bold; }
 }
 </style>
 
-<!-- ================= DESTINATIONS ================= -->
-<section class="destinations-section py-5 reveal">
-<div class="container">
-<div class="text-center mb-5">
-<h2 class="fw-bold">Popular Destinations</h2>
-<p>Explore our top travel destinations around the world.</p>
-</div>
-<div class="row g-4">
-<!-- Cards -->
-<div class="col-md-6 col-lg-4"><div class="card destination-card"><img src=
-  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt=""><div class="card-body"><h5>Maldives</h5><p>Relax on white sandy beaches and turquoise waters.</p></div></div></div>
-<div class="col-md-6 col-lg-4"><div class="card destination-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt=""><div class="card-body"><h5>Paris</h5><p>Experience the city of love, fashion, and fine dining.</p></div></div></div>
-<div class="col-md-6 col-lg-4"><div class="card destination-card"><img 
-  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="">
-  <div class="card-body"><h5>Tokyo</h5><p>Discover vibrant city life and
-     traditional culture.</p></div></div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show'); // كل ضغطة تضيف/تشيل الكلاس show
+  });
+});
+</script>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600" alt="Travel Banner" class="hero-img">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Explore the Wonders of the World</h1>
+    <p>Join SphinxTrail Tours for unforgettable adventures, luxurious trips, and guided tours.</p>
+    <button class="btn">Book Your Adventure</button>
+  </div>
+</section>
+
+<!-- TOURS -->
+<section id="tours" class="tours-section">
+  <h2>Our Popular Tours</h2>
+  <div class="tour-cards">
+    <div class="tour-card">
+     <img src="img//ddd.jpg" alt="Our Popular Tours">
+      <h1>Egypt Pyramids Tour</h1>
+      <p>Explore the ancient pyramids of Giza with guided tours and luxury transport.</p>
+      <button>Book Now</button>
     </div>
-</div>
-</div>
+    <div class="tour-card">
+    
+     <img src="img//ddd.jpg" alt="Our Popular Tours">
+    
+      <h1>Red Sea Diving</h1>
+      <p>Dive into the Red Sea and discover the mesmerizing coral reefs and marine life.</p>
+      <button>Book Now</button>
+    </div>
+    <div class="tour-card">
+      
+     <img src="img//ddd.jpg" alt="Our Popular Tours">
+
+      <h1>Luxury Nile Cruise</h1>
+      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
+      <button>Book Now</button>
+    </div>
+   
+    <div class="tour-card">
+    
+     <img src="img//ddd.jpg" alt="Our Popular Tours">
+
+      <h1>Luxury Nile Cruise</h1>
+      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
+      <button>Book Now</button>
+    </div>
+    
+    <div class="tour-card">
+     <img src="img//ddd.jpg" alt="Our Popular Tours">
+
+      <h1>Luxury Nile Cruise</h1>
+      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
+      <button>Book Now</button>
+    </div>
+     <div class="tour-card">
+     
+     <img src="img//ddd.jpg" alt="Our Popular Tours">
+
+      <h1>Luxury Nile Cruise</h1>
+      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
+      <button>Book Now</button>
+    </div>
+        <div class="tour-card">
+     <img src="img//ddd.jpg" alt="Our Popular Tours">
+
+      <h1>Luxury Nile Cruise</h1>
+      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
+      <button>Book Now</button>
+    </div>
+        <div class="tour-card">
+     <img src="img//ddd.jpg" alt="Our Popular Tours">
+
+      <h1>Luxury Nile Cruise</h1>
+      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
+      <button>Book Now</button>
+    </div>
+  </div>
 </section>
 
-<!-- ================= BOOKING ================= -->
-<section class="booking-only-section py-5 reveal">
-<div class="container text-center mb-4"><h2 class="fw-bold">Book Your Flight</h2><p>Fill the details below to reserve your trip instantly.</p></div>
-<div class="booking-form-wrapper mx-auto p-4 rounded-4 shadow-lg" style="max-width:700px;">
-<form id="bookingForm" class="row g-3">
-<div class="col-md-6">
-<label>Destination</label>
-<select id="destination" class="form-select">
-<option disabled selected>Select a destination</option>
-<option value="Paris" data-price="450">Paris</option>
-<option value="Tokyo" data-price="780">Tokyo</option>
-<option value="New York" data-price="600">New York</option>
-<option value="Dubai" data-price="520">Dubai</option>
-<option value="Bali" data-price="690">Bali</option>
-<option value="Maldives" data-price="850">Maldives</option>
-</select>
-</div>
-<div class="col-md-6"><label>Departure</label><input type="date" id="departure" class="form-control"></div>
-<div class="col-md-6"><label>Return</label><input type="date" id="return" class="form-control"></div>
-<div class="col-md-6"><label>Passengers</label><input type="number" id="passengers" value="1" min="1" class="form-control"></div>
-<div class="col-12 mt-2"><h5>Total Price: $<span id="totalPrice">0</span></h5></div>
-<div class="col-12 d-grid mt-3"><button type="submit" class="btn btn-custom rounded-pill py-2">Book Now</button></div>
-</form>
-</div>
+<!-- GALLERY -->
+
+
+<!-- TEAM -->
+<section id="team">
+  <h2>Meet Our Team</h2>
+  <div class="team-cards">
+    <div class="team-card">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+      <h4>John Doe</h4>
+      <p>Tour Guide Expert</p>
+    </div>
+    <div class="team-card">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+      <h4>Jane Smith</h4>
+      <p>Travel Consultant</p>
+    </div>
+    <div class="team-card">
+      <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="">
+      <h4>Mike Johnson</h4>
+      <p>Adventure Specialist</p>
+    </div>
+    <div class="team-card">
+      <img src="https://randomuser.me/api/portraits/women/48.jpg" alt="">
+      <h4>Linda Brown</h4>
+      <p>Travel Planner</p>
+    </div>
+    <!-- الصف الثاني -->
+    <div class="team-card">
+      <img src="https://randomuser.me/api/portraits/men/50.jpg" alt="">
+      <h4>Chris Lee</h4>
+      <p>Tour Coordinator</p>
+    </div>
+    <div class="team-card">
+      <img src="https://randomuser.me/api/portraits/women/52.jpg" alt="">
+      <h4>Emma Davis</h4>
+      <p>Customer Support</p>
+    </div>
+    <div class="team-card">
+      <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="">
+      <h4>Robert Wilson</h4>
+      <p>Logistics Manager</p>
+    </div>
+    <div class="team-card">
+      <img src="https://randomuser.me/api/portraits/women/56.jpg" alt="">
+      <h4>Sophia Taylor</h4>
+      <p>Marketing Specialist</p>
+    </div>
+  </div>
 </section>
 
-<!-- ================= CONTENT SECTION ================= -->
-<section class="content-section py-5 reveal">
-  <div class="container">
-    <div class="row align-items-center g-4">
-      <!-- Image -->
-      <div class="col-lg-6">
-        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff" alt="Travel Adventure" class="img-fluid rounded-4 shadow-sm">
+<!-- FAQ -->
+<section id="faq">
+  <h2>FAQ</h2>
+  
+  <div class="accordion-item">
+    <h3>What is included in the tours?</h3>
+    <p>All tours include transportation, accommodation, and guided services unless specified otherwise.</p>
+  </div>
+  
+  <div class="accordion-item">
+    <h3>How do I book?</h3>
+    <p>You can book online through our website or contact our support for assistance.</p>
+  </div>
+  
+  <div class="accordion-item">
+    <h3>Are the tours family-friendly?</h3>
+    <p>Yes! Our tours are suitable for families with children of all ages.</p>
+  </div>
+  
+  <div class="accordion-item">
+    <h3>Do I need travel insurance?</h3>
+    <p>We recommend travel insurance for all trips, but it is not mandatory.</p>
+  </div>
+  
+  <div class="accordion-item">
+    <h3>What is the cancellation policy?</h3>
+    <p>You can cancel up to 7 days before the tour for a full refund.</p>
+  </div>
+  
+  <div class="accordion-item">
+    <h3>Are meals included?</h3>
+    <p>Some tours include meals; please check the tour details for specifics.</p>
+  </div>
+  
+  <div class="accordion-item">
+    <h3>Can I customize my tour?</h3>
+    <p>Yes, we offer customizable tours based on your preferences.</p>
+  </div>
+  
+  <div class="accordion-item">
+    <h3>What languages are the tours available in?</h3>
+    <p>Our tours are available in English, Arabic, and other languages on request.</p>
+  </div>
+</section>
+
+<!-- LUXURY CARDS -->
+<section id="luxury">
+  <h2>Luxury Experiences</h2>
+  <div class="luxury-grid">
+    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1556761175-4b46a572b786?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
+      <div class="card-overlay">
+        <h1>Luxury Cruise</h1>
+        <p>Experience the Nile in luxury.</p>
+        <button>View More</button>
       </div>
-      <!-- Text -->
-      <div class="col-lg-6">
-        <h2 class="fw-bold mb-3">Discover Hidden Gems</h2>
-        <p class="mb-3">
-          TravelGo helps you explore destinations off the beaten path. 
-          Our expert guides curate unique experiences for travelers seeking adventure, culture, and serenity.
-        </p>
-        <p>
-          From remote islands to vibrant city streets, we provide the insights, tips, and services to make your trip unforgettable.
-        </p>
-        <a href="#" class="btn btn-custom rounded-pill px-4 mt-3">Learn More</a>
+    
+    </div>
+    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1556761175-4b46a572b786?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
+
+      <div class="card-overlay">
+        <h1>Private Tours</h1>
+        <p>Exclusive personalized experiences.</p>
+        <button>View More</button>
+      </div>
+    </div>
+    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
+      <div class="card-overlay">
+        <h1>Luxury Safari</h1>
+        <p>Adventure in comfort and style.</p>
+        <button>View More</button>
+      </div>
+    </div>
+    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1556761175-4b46a572b786?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
+
+      <div class="card-overlay">
+        <h1>Gourmet Dining</h1>
+        <p>Exclusive culinary experiences.</p>
+        <button>View More</button>
+      </div>
+    </div>
+    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
+      <div class="card-overlay">
+        <h1>Luxury Spa</h1>
+        <p>Relax and rejuvenate in style.</p>
+        <button>View More</button>
+      </div>
+    </div>
+    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1496412705862-e0088f16f791?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
+      <div class="card-overlay">
+        <h1>Private Yacht</h1>
+        <p>Sail in ultimate luxury and privacy.</p>
+        <button>View More</button>
+      </div>
+    </div>
+    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1488747279002-c8523379faaa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
+      <div class="card-overlay">
+        <h1>Helicopter Tours</h1>
+        <p>Bird’s eye view of famous landmarks.</p>
+        <button>View More</button>
+      </div>
+    </div>
+    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
+      <div class="card-overlay">
+        <h1>Exclusive Resorts</h1>
+        <p>Stay in the world’s finest resorts.</p>
+        <button>View More</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- From Uiverse.io by bhaveshxrawat --> 
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="tel" name="phone" placeholder="Your Phone Number" required>
+    <input type="number" name="guests" placeholder="Number of Guests" min="1" required>
+    <input type="date" name="date" placeholder="Select Date" required>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+    <p id="formMessage" style="display:none; color:green; margin-top:10px;">Your message has been sent successfully!</p>
+  </form>
+</section>
 
 
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <h2>What Our Clients Say</h2>
+  <div class="testimonial-cards">
+    <div class="testimonial-card">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client 1">
+      <h4>Sarah Williams</h4>
+      <p>"SphinxTrail Tours made our vacation unforgettable! Excellent service and amazing guides."</p>
+    </div>
+    <div class="testimonial-card">
+      <img src="https://randomuser.me/api/portraits/men/72.jpg" alt="Client 2">
+      <h4>Michael Brown</h4>
+      <p>"Highly recommended! The tours were perfectly organized and very enjoyable."</p>
+    </div>
+    <div class="testimonial-card">
+      <img src="https://randomuser.me/api/portraits/women/78.jpg" alt="Client 3">
+      <h4>Linda Johnson</h4>
+      <p>"Fantastic experience! Luxury accommodations and great customer support."</p>
+    </div>
+  </div>
+</section>
+<!-- REGISTRATION WITH TRIP TYPE AND DESTINATION -->
+<section id="registration" class="registration-section">
+  <div class="registration-overlay">
+    <h2>Trip & Company Registration</h2>
+    <p>Register yourself for your preferred trip and destination with our company.</p>
+    <form id="registrationForm" class="registration-form">
+      <div class="form-row">
+        <input type="text" name="fullname" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+      </div>
+      <div class="form-row">
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <select name="tripType" required>
+          <option value="">Select Trip Type</option>
+          <option value="luxury">Luxury Trip</option>
+          <option value="adventure">Adventure Trip</option>
+          <option value="cultural">Cultural Trip</option>
+          <option value="custom">Custom Trip</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <select name="destination" required>
+          <option value="">Select Destination</option>
+          <option value="egypt">Egypt</option>
+          <option value="greece">Greece</option>
+          <option value="italy">Italy</option>
+          <option value="turkey">Turkey</option>
+          <option value="maldives">Maldives</option>
+        </select>
+        <input type="date" name="startDate" required>
+      </div>
+      <textarea name="notes" placeholder="Additional Notes" rows="2"></textarea>
+      <button type="submit" class="btn">Submit Registration</button>
+      <p id="registrationMessage" style="display:none; color:lightgreen; margin-top:10px;">
+        Registration submitted successfully!
+      </p>
+    </form>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>SphinxTrail Tours</h3>
+      <p>Explore the world with our luxury tours and personalized experiences.</p>
+    </div>
 
-<!-- ================= FOOTER ================= -->
-<footer class="footer-section py-5 reveal">
-<div class="container"><div class="row">
-<div class="col-md-4 mb-4"><h3>Travel<span>Go</span></h3><p>Explore the world with carefully planned trips, exclusive offers, and unforgettable experiences tailored for you.</p></div>
-<div class="col-md-4 mb-4"><h5>Quick Links</h5><ul class="list-unstyled footer-links"><li><a href="#">Home</a></li><li><a href="#">Trips</a></li><li><a href="#">Offers</a></li><li><a href="#">About Us</a></li><li><a href="#">Contact</a></li></ul></div>
-<div class="col-md-4 mb-4"><h5>Connect with Us</h5><div class="d-flex gap-3 mb-3"><a href="#" class="social-icon"><i class="bi bi-facebook"></i></a><a href="#" class="social-icon"><i class="bi bi-twitter"></i></a><a href="#" class="social-icon"><i class="bi bi-instagram"></i></a><a href="#" class="social-icon"><i class="bi bi-youtube"></i></a></div><p>© 2026 TravelGo. All Rights Reserved.</p></div>
-</div></div>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#tours">Tours</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#terms">Terms</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p>Email: info@sphinxtrail.com</p>
+      <p>Phone: +20 123 456 7890</p>
+      <p>Address: Cairo, Egypt</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-links">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2026 SphinxTrail Tours. All Rights Reserved.</p>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// ================= BOOKING PRICE =================
-const destinationSelect = document.getElementById('destination');
-const passengersInput = document.getElementById('passengers');
-const totalPriceSpan = document.getElementById('totalPrice');
-const bookingForm = document.getElementById('bookingForm');
+  // اختر كل روابط الـ navbar
+  const navLinks = document.querySelectorAll('.nav a');
 
-function updatePrice(){
-  const selectedOption = destinationSelect.options[destinationSelect.selectedIndex];
-  const pricePerPerson = selectedOption ? parseInt(selectedOption.dataset.price || 0) : 0;
-  const passengers = parseInt(passengersInput.value) || 1;
-  totalPriceSpan.textContent = pricePerPerson*passengers;
-}
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e){
+      e.preventDefault(); // يمنع الريفريش
+      const targetId = this.getAttribute('href'); // يأخذ الـ ID اللي هتوديه
+      if(targetId.startsWith('#')){
+        const section = document.querySelector(targetId);
+        if(section){
+          section.scrollIntoView({ behavior: 'smooth' }); // سكرول سلس للجزء المطلوب
+        }
+      }
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+  const accordionItems = document.querySelectorAll('.accordion-item');
 
-destinationSelect.addEventListener('change',updatePrice);
-passengersInput.addEventListener('input',updatePrice);
+  accordionItems.forEach(item => {
+    const header = item.querySelector('h3');
 
-bookingForm.addEventListener('submit',function(e){
-e.preventDefault();
-const destination = destinationSelect.value;
-const departure = document.getElementById('departure').value;
-const returnDate = document.getElementById('return').value;
-const passengers = passengersInput.value;
-const totalPrice = totalPriceSpan.textContent;
-if(!destination || !departure || !returnDate || passengers<1){alert('Please fill all fields');return;}
-alert(`Booking Confirmed!\nDestination: ${destination}\nDeparture: ${departure}\nReturn: ${returnDate}\nPassengers: ${passengers}\nTotal Price: $${totalPrice}`);
+    header.addEventListener('click', () => {
+      // لو العنصر نفسه مفتوح، نقلبه
+      const isActive = item.classList.contains('active');
+
+      // قفل كل العناصر
+      accordionItems.forEach(i => i.classList.remove('active'));
+
+      // لو كان مش مفتوح قبل كده، افتحه
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
 });
 
-// ================= REVEAL ANIMATION =================
-const reveals = document.querySelectorAll(".reveal");
-window.addEventListener("scroll", () => {
-reveals.forEach(el => {
-const windowHeight = window.innerHeight;
-const elementTop = el.getBoundingClientRect().top;
-const triggerPoint = window.innerWidth<768 ? 50 : 100;
-if(elementTop < windowHeight - triggerPoint){el.classList.add("active");}
-});
-});
+
+
+
+  
 </script>
+
 
 </body>
 </html>
