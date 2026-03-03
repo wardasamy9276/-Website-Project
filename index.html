@@ -5,97 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SphinxTrail Tours</title>
 <link rel="stylesheet" href="style/style.css">
-<style>
-/* ===== Reset & Base ===== */
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Noto Kufi Arabic', sans-serif; }
-body { line-height:1.6; color:#333; scroll-behavior:smooth; }
-.container { width:90%; margin:auto; }
 
-/* ===== Header ===== */
-.header { background:#FF7F50; color:#fff; padding:15px 0; position:fixed; top:0; width:100%; z-index:1000; }
-.header .container { display:flex; justify-content:space-between; align-items:center; }
-.header .logo { font-size:24px; font-weight:bold; text-decoration:none; color:#fff; }
-.nav { display:flex; gap:20px; }
-.nav a { color:#fff; text-decoration:none; position:relative; }
-.nav a::after { content:''; position:absolute; bottom:-2px;
- left:0; width:0; height:2px; background:#fff; transition:width 0.3s; }
-.nav a:hover::after { width:100%; }
-.menu-toggle { display:none; font-size:28px; cursor:pointer; }
-@media(max-width:768px){
-  .nav { display:block; flex-direction:column; width:100%; background:#FF7F50; }
-  .nav.show { display:flex; }
-  .menu-toggle { display:block; }
-  .nav a { padding:10px 0; text-align:center; }
-}
-
-/* ===== Hero ===== */
-.hero { position:relative; width:100%; height:100vh; display:flex; justify-content:center; align-items:center; color:#fff; overflow:hidden; }
-.hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter: brightness(0.7); transition:transform 0.5s; }
-.hero:hover .hero-img { transform:scale(1.05); }
-.hero-content { position:relative; text-align:center; z-index:2; max-width:800px; }
-.hero-content h1 { font-size:3rem; margin-bottom:20px; }
-.hero-content p { font-size:1.2rem; margin-bottom:25px; }
-.hero-content .btn { padding:12px 30px; background:#FF7F50; color:#fff; border:none; border-radius:5px; cursor:pointer; transition:0.3s; }
-.hero-content .btn:hover { background:#ff956f; transform:scale(1.05); }
-
-/* ===== Tours ===== */
-.tours-section { background:#f5f7fa; padding:80px 0; }
-.tours-section h2 {display: flex; justify-content: center; align-items: center;color:#212112;padding: 2px;}
-
-
-.tour-cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; max-width:1200px; margin:auto; }
-.tour-card { background:#fff; border-radius:15px; padding:15px;text-align: center; cursor:pointer; transition:0.4s; box-shadow:0 4px 12px rgba(0,0,0,0.1); flex:1 1 23%; }
-.tour-card img { width:100%; height:160px; object-fit:cover; border-radius:12px; transition:0.4s; }
-.tour-card:hover img { transform:scale(1.07); }
-.tour-card h1 { font-size:1.2rem; margin:10px 0; color:#1a237e; text-align: center;}
-.tour-card p { font-size:0.95rem; color:#333; margin-bottom:10px; }
-.tour-card button { padding:8px 20px; background:#FF7F50; color:#fff; border:none; border-radius:5px; cursor:pointer; transition:0.3s; }
-.tour-card button:hover { background:#ff956f; transform:scale(1.05); }
-
-
-/* ===== Team ===== */
-.team-cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
- h2{ display:flex; align-items: center;color:#212112; justify-content:center;padding: 2px; }
-
-.team-card { background:#fff; border-radius:15px; padding:15px; text-align:center; cursor:pointer; transition:0.4s; box-shadow:0 4px 12px rgba(0,0,0,0.1); flex:1 1 23%; }
-.team-card img { width:120px; height:120px; border-radius:50%; margin-bottom:10px; transition:0.4s; }
-.team-card:hover img { transform:scale(1.1); }
-.team-card h4 { font-size:1.1rem; color:#1a237e; margin-bottom:5px; }
-.team-card p { font-size:0.9rem; color:#555; }
-
-/* ===== Luxury Grid ===== */
-.luxury-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; max-width:1300px; margin:auto; }
-.luxury-card { flex:1 1 23%; height:250px; background-size:cover; background-position:center; border-radius:0 0 30px 30px; position:relative; cursor:pointer; overflow:hidden; }
-.luxury-card::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.55); opacity:0; transition:0.4s; }
-.luxury-card:hover::before { opacity:1; }
-.card-overlay { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:#fff; opacity:0; transform:translateY(20px); transition:0.4s; }
-.luxury-card:hover .card-overlay { opacity:1; transform:translateY(0); }
-.card-overlay h1 { color:#d4af37; margin-bottom:8px; font-size:1.2rem; }
-.card-overlay p { font-size:0.9rem; margin-bottom:15px; }
-.card-overlay button { padding:8px 20px; border:1px solid #d4af37; color:#d4af37; border-radius:20px; background:transparent; cursor:pointer; transition:0.3s; }
-.card-overlay button:hover { background:#d4a037; color:#000; }
-
-/* ===== Contact ===== */
-form { display:flex; flex-direction:column; max-width:450px; margin:auto; }
-input, select, textarea { padding:8px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc; transition:0.3s; }
-input:focus, select:focus, textarea:focus { border-color:#FF7F50; }
-button.btn { margin-top:10px; padding:10px 20px; background:#FF7F50; color:#fff; border:none; border-radius:5px; cursor:pointer; transition:0.3s; }
-button.btn:hover { background:#ff956f; transform:scale(1.05); }
-
-/* ===== Footer ===== */
-.footer { text-align:center; padding:25px 0; background:#222; color:#fff; }
-
-/* ===== Responsive ===== */
-@media(max-width:1024px){ .tour-card,.team-card,.luxury-card{flex:1 1 48%;} }
-@media(max-width:768px){ .tour-card,.team-card,.luxury-card{flex:1 1 100%;} }
-@media(max-width:480px){
-  .hero-content h1{font-size:1.8rem;} 
-  .hero-content p{font-size:1rem;}
-  .hero-content .btn{font-size:0.9rem;padding:8px 15px;}
-  .tour-card img{height:140px;}
-  .team-card img{width:90px;height:90px;}
-}
-</style>
 </head>
 <body>
 
@@ -116,6 +26,78 @@ button.btn:hover { background:#ff956f; transform:scale(1.05); }
     </nav>
   </div>
 </header>
+<!-- WhatsApp & Phone Floating Buttons -->
+<div class="contact-buttons">
+  <!-- WhatsApp -->
+  <a href="https://wa.me/201234567890" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
+    <!-- أيقونة واتساب الويب الرسمية بدون خلفية -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </a>
+
+  <!-- Phone -->
+  <a href="tel:+201234567890" class="phone-btn" title="Call Us">
+    <svg width="30" height="30" viewBox="0 0 512 512" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M511.1 387.7l-23.6-99.3c-3.1-12.9-14.1-21.8-27.2-22.8l-104-8c-13.5-1-25.1 8.4-28.4 21.6l-19 74.2c-39.2-20.9-71.5-53.1-92.4-92.4l74.2-19c13.2-3.3 22.6-14.9 21.6-28.4l-8-104c-1-13.1-9.9-24.1-22.8-27.2L124.3 .9C110.6-2.1 95.2 2.5 86.1 13.8l-46.1 55c-16.2 19.4-17.6 48.2-3.5 69.2 62.3 94.4 163.4 195.5 257.8 257.8 21 14.1 49.8 12.7 69.2-3.5l55-46.1c11.3-9.1 15.9-24.5 12.9-38.2z"/>
+    </svg>
+  </a>
+</div>
+
+<style>
+.contact-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 9999;
+}
+
+.contact-buttons a {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+/* زر واتساب */
+.contact-buttons a.whatsapp-btn {
+  background-color: #25D366; /* أخضر واتساب */
+}
+
+.contact-buttons a.whatsapp-btn:hover {
+  transform: scale(1.1);
+  background-color: #1ebe57;
+}
+
+/* زر الهاتف */
+.contact-buttons a.phone-btn {
+  background-color: #0077B5;
+}
+
+.contact-buttons a.phone-btn:hover {
+  transform: scale(1.1);
+  background-color: #005f8e;
+}
+
+/* أيقونات */
+.contact-buttons img {
+  width: 30px;
+  height: 30px;
+}
+.contact-buttons svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+</style>
+
+
 
 <style>
 .header {
@@ -127,12 +109,14 @@ button.btn:hover { background:#ff956f; transform:scale(1.05); }
   width:100%;
   z-index:1000;
 }
+
 .header .container {
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:0 20px;
 }
+
 .header .logo {
   font-size:24px;
   font-weight:bold;
@@ -140,29 +124,39 @@ button.btn:hover { background:#ff956f; transform:scale(1.05); }
   text-decoration:none;
 }
 
-/* Nav */
+/* ===== Nav ===== */
 .nav {
   display:flex;
   gap:20px;
 }
+
 .nav a {
   color:#fff;
   text-decoration:none;
   position:relative;
+  padding:5px 0;
 }
+
+/* الخط المتحرك */
 .nav a::after {
   content:'';
   position:absolute;
-  bottom:-2px;
-  left:0;
-  width:0;
+  bottom:-4px;
+  left:50%;
+  width:100%;
   height:2px;
   background:#fff;
-  transition:width 0.3s;
-}
-.nav a:hover::after { width:100%; }
 
-/* Hamburger */
+  transform:translateX(-50%) scaleX(0);
+  transform-origin:center;
+  transition:transform 0.4s ease;
+}
+
+.nav a:hover::after {
+  transform:translateX(-50%) scaleX(1);
+}
+
+/* ===== Hamburger ===== */
 .menu-toggle {
   display:none;
   font-size:28px;
@@ -172,9 +166,13 @@ button.btn:hover { background:#ff956f; transform:scale(1.05); }
 
 /* ===== Mobile ===== */
 @media(max-width:768px){
-  .menu-toggle { display:block; }
+
+  .menu-toggle {
+    display:block;
+  }
+
   .nav {
-    display:none; /* مخفية افتراضياً */
+    display:none;
     flex-direction:column;
     width:100%;
     background:#FF7F50;
@@ -184,30 +182,78 @@ button.btn:hover { background:#ff956f; transform:scale(1.05); }
     top:100%;
     left:0;
   }
-  .nav.show { display:flex; }
-  .nav a { padding:10px 0; font-size:18px; font-weight:bold; }
+
+  .nav.show {
+    display:flex;
+  }
+
+  .nav a {
+    display:inline-block; /* مهم جدًا عشان الخط يبقى قد الكلام */
+    padding:10px 0;
+    font-size:18px;
+    font-weight:bold;
+  }
 }
 </style>
-
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.nav');
+document.addEventListener("DOMContentLoaded", function () {
 
-  menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('show'); // كل ضغطة تضيف/تشيل الكلاس show
+  const menuToggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+  const navLinks = document.querySelectorAll(".nav a");
+  const header = document.querySelector(".header");
+
+  // فتح وقفل المنيو
+  menuToggle.addEventListener("click", function () {
+    nav.classList.toggle("show");
+
+    if (nav.classList.contains("show")) {
+      menuToggle.innerHTML = "✖";
+    } else {
+      menuToggle.innerHTML = "&#9776;";
+    }
   });
+
+  // لما أضغط على لينك
+  navLinks.forEach(function (link) {
+    link.addEventListener("click", function (e) {
+
+      e.preventDefault(); // نوقف السلوك الافتراضي
+
+      const targetId = this.getAttribute("href");
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        const headerHeight = header.offsetHeight;
+        const sectionPosition = targetSection.offsetTop - headerHeight;
+
+        window.scrollTo({
+          top: sectionPosition,
+          behavior: "smooth"
+        });
+      }
+
+      // نقفل المنيو
+      nav.classList.remove("show");
+      menuToggle.innerHTML = "&#9776;";
+    });
+  });
+
 });
 </script>
 
+
 <!-- HERO -->
-<section id="home" class="hero">
-  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600" alt="Travel Banner" class="hero-img">
+<section class="history-hero">
   <div class="overlay"></div>
+
   <div class="hero-content">
-    <h1>Explore the Wonders of the World</h1>
-    <p>Join SphinxTrail Tours for unforgettable adventures, luxurious trips, and guided tours.</p>
-    <button class="btn">Book Your Adventure</button>
+    <h1>The Great Pyramids of Giza</h1>
+    <p>
+      Discover one of the most magnificent wonders of the ancient world,
+      standing tall for over 4,500 years in Egypt.
+    </p>
+    <button class="btn">Explore More</button>
   </div>
 </section>
 
@@ -215,67 +261,39 @@ document.addEventListener('DOMContentLoaded', () => {
 <section id="tours" class="tours-section">
   <h2>Our Popular Tours</h2>
   <div class="tour-cards">
-    <div class="tour-card">
-     <img src="img//ddd.jpg" alt="Our Popular Tours">
-      <h1>Egypt Pyramids Tour</h1>
-      <p>Explore the ancient pyramids of Giza with guided tours and luxury transport.</p>
-      <button>Book Now</button>
-    </div>
-    <div class="tour-card">
-    
-     <img src="img//ddd.jpg" alt="Our Popular Tours">
-    
-      <h1>Red Sea Diving</h1>
-      <p>Dive into the Red Sea and discover the mesmerizing coral reefs and marine life.</p>
-      <button>Book Now</button>
-    </div>
-    <div class="tour-card">
-      
-     <img src="img//ddd.jpg" alt="Our Popular Tours">
-
-      <h1>Luxury Nile Cruise</h1>
-      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
-      <button>Book Now</button>
-    </div>
-   
-    <div class="tour-card">
-    
-     <img src="img//ddd.jpg" alt="Our Popular Tours">
-
-      <h1>Luxury Nile Cruise</h1>
-      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
-      <button>Book Now</button>
-    </div>
     
     <div class="tour-card">
-     <img src="img//ddd.jpg" alt="Our Popular Tours">
-
-      <h1>Luxury Nile Cruise</h1>
-      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
+      <img src="https://images.pexels.com/photos/10928747/pexels-photo-10928747.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Giza Pyramid Complex">
+      <h1>Pyramids of Giza</h1>
+      <p>Visit the iconic Giza pyramids, one of the most famous ancient wonders in the world.</p>
       <button>Book Now</button>
     </div>
-     <div class="tour-card">
-     
-     <img src="img//ddd.jpg" alt="Our Popular Tours">
 
-      <h1>Luxury Nile Cruise</h1>
-      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
+    <div class="tour-card">
+      <img 
+   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzp1G7HVfCDpUtzGFEVzX5tksCPwdHKttKgw&s"
+      <h1>Luxor Temple</h1>
+      <p>Explore the majestic Luxor Temple, rich in ancient Egyptian history.</p>
       <button>Book Now</button>
     </div>
-        <div class="tour-card">
-     <img src="img//ddd.jpg" alt="Our Popular Tours">
 
-      <h1>Luxury Nile Cruise</h1>
-      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
+    <div class="tour-card">
+      <img src="data:image/jpeg;base64,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" alt="Temple Karnak">
+      <h1>Karnak Temple</h1>
+      <p>Discover the huge Karnak complex with its towering columns and ancient carvings.</p>
       <button>Book Now</button>
     </div>
-        <div class="tour-card">
-     <img src="img//ddd.jpg" alt="Our Popular Tours">
 
-      <h1>Luxury Nile Cruise</h1>
-      <p>Sail the Nile in style while enjoying gourmet meals and historical excursions.</p>
+    <div class="tour-card">
+
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5DX3r5w5BOaVQGpOzRowN7zhKM8dWSUk7WA&s"
+      alt="Great Sphinx & Pyramid">
+
+      <h1>Sphinx & Pyramids</h1>
+      <p>See the Great Sphinx and pyramids standing together as symbols of ancient Egypt.</p>
       <button>Book Now</button>
     </div>
+
   </div>
 </section>
 
@@ -283,53 +301,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <!-- TEAM -->
-<section id="team">
-  <h2>Meet Our Team</h2>
-  <div class="team-cards">
-    <div class="team-card">
-      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
-      <h4>John Doe</h4>
-      <p>Tour Guide Expert</p>
+<section id="testimonials">
+  <h2>What Our Clients Say</h2>
+  <div class="testimonial-cards">
+    
+    <div class="testimonial-card">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client Photo">
+      <h4>Amira Hassan</h4>
+      <p>Egypt Pyramids Tour</p>
+      <p>"The guide was amazing, and the pyramids were breathtaking! Highly recommend this tour for anyone visiting Egypt."</p>
     </div>
-    <div class="team-card">
-      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
-      <h4>Jane Smith</h4>
-      <p>Travel Consultant</p>
+
+    <div class="testimonial-card">
+      <img src="https://randomuser.me/api/portraits/men/66.jpg" alt="Client Photo">
+      <h4>Omar Khaled</h4>
+      <p>Red Sea Diving</p>
+      <p>"Diving in the Red Sea was a dream! The instructors were professional and the marine life is incredible."</p>
     </div>
-    <div class="team-card">
-      <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="">
-      <h4>Mike Johnson</h4>
-      <p>Adventure Specialist</p>
+
+    <div class="testimonial-card">
+      <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Client Photo">
+      <h4>Salma Nabil</h4>
+      <p>Luxury Nile Cruise</p>
+      <p>"A luxurious experience on the Nile. The food, staff, and scenery were all top-notch. Can't wait to come back!"</p>
     </div>
-    <div class="team-card">
-      <img src="https://randomuser.me/api/portraits/women/48.jpg" alt="">
-      <h4>Linda Brown</h4>
-      <p>Travel Planner</p>
+
+    <div class="testimonial-card">
+      <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Client Photo">
+      <h4>Mahmoud Adel</h4>
+      <p>Karnak & Luxor Tour</p>
+      <p>"Exploring Luxor and Karnak temples was amazing. The guide gave so much insight into Egyptian history."</p>
     </div>
-    <!-- الصف الثاني -->
-    <div class="team-card">
-      <img src="https://randomuser.me/api/portraits/men/50.jpg" alt="">
-      <h4>Chris Lee</h4>
-      <p>Tour Coordinator</p>
-    </div>
-    <div class="team-card">
-      <img src="https://randomuser.me/api/portraits/women/52.jpg" alt="">
-      <h4>Emma Davis</h4>
-      <p>Customer Support</p>
-    </div>
-    <div class="team-card">
-      <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="">
-      <h4>Robert Wilson</h4>
-      <p>Logistics Manager</p>
-    </div>
-    <div class="team-card">
-      <img src="https://randomuser.me/api/portraits/women/56.jpg" alt="">
-      <h4>Sophia Taylor</h4>
-      <p>Marketing Specialist</p>
-    </div>
+
   </div>
 </section>
-
 <!-- FAQ -->
 <section id="faq">
   <h2>FAQ</h2>
@@ -375,71 +380,92 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </section>
 
-<!-- LUXURY CARDS -->
-<section id="luxury">
-  <h2>Luxury Experiences</h2>
-  <div class="luxury-grid">
-    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1556761175-4b46a572b786?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
-      <div class="card-overlay">
-        <h1>Luxury Cruise</h1>
-        <p>Experience the Nile in luxury.</p>
-        <button>View More</button>
+
+
+
+  <section class="heritage-section">
+    <h2 class="section-title">Heritage Sites</h2>
+    <div class="cards-container">
+      <!-- Card 1 -->
+      <div class="heritage-card">
+
+
+<img class="card-image" style="background-image: url('script/images.jpg');">
+ 
+       <div class="card-content">
+          <h3>Giza Pyramids</h3>
+          <p>The Pyramids of Giza are one of the ancient wonders of the world and a UNESCO Woظ
+            rld Heritage site.</p>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/6/6b/Pyramids_of_Giza,_Egypt_-_July_2006.jpg" target="_blank" class="card-link">View Image</a>
+        </div>
       </div>
+
+      <!-- Card 2 -->
+      <div class="heritage-card">
+
+<img class="card-image" style="background-image: url('script/Untitled1.jpg');">
+
+        <div class="card-content">
+          <h3>Karnak Temple</h3>
+          <p>Karnak Temple is one of the largest religious complexes in ancient Egypt.</p>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/5c/Karnak_Temple.jpg" target="_blank" class="card-link">View Image</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="heritage-card">
+<img class="card-image" style="background-image: url('script/img1.jpg');">
+
+<div class="card-content">
+
+          <h3>Abu Simbel</h3>
+          <p>The Abu Simbel temples are rock-cut monuments famous for the statues of Ramses II.</p>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/d/d4/Abu_Simbel_Temple.jpg" target="_blank" class="card-link">View Image</a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="heritage-card">
+<img class="card-image" style="background-image: url('script/images2.jpg');">
+
+<div class="card-content">
+          <h3>Luxor Temple</h3>
+          <p>Luxor Temple is a historic landmark on the banks of the Nile.</p>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/0/03/Luxor_Temple.jpg" target="_blank" class="card-link">View Image</a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="heritage-card">
+       
+<img class="card-image" style="background-image: url('script/img2.jpg');">
+
+<div class="card-content">
+          <h3>Hatshepsut Temple</h3>
+          <p>Magnificent temple carved into the cliff in memory of Queen Hatshepsut.</p>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/e/eb/Temple_of_Hatshepsut.jpg" target="_blank" class="card-link">View Image</a>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="heritage-card">
+       
+<img class="card-image" style="background-image: url('script/img3.jpg');">
+
+<div class="card-content">
+          <h3>Philae Temple</h3>
+          <p>The Temple of Isis in Philae Island is an important tourist attraction.</p>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/8/84/Philae_Temple.jpg" target="_blank" class="card-link">View Image</a>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
     
     </div>
-    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1556761175-4b46a572b786?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
+  </section>
+</body>
+</html>
 
-      <div class="card-overlay">
-        <h1>Private Tours</h1>
-        <p>Exclusive personalized experiences.</p>
-        <button>View More</button>
-      </div>
-    </div>
-    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
-      <div class="card-overlay">
-        <h1>Luxury Safari</h1>
-        <p>Adventure in comfort and style.</p>
-        <button>View More</button>
-      </div>
-    </div>
-    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1556761175-4b46a572b786?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
-
-      <div class="card-overlay">
-        <h1>Gourmet Dining</h1>
-        <p>Exclusive culinary experiences.</p>
-        <button>View More</button>
-      </div>
-    </div>
-    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
-      <div class="card-overlay">
-        <h1>Luxury Spa</h1>
-        <p>Relax and rejuvenate in style.</p>
-        <button>View More</button>
-      </div>
-    </div>
-    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1496412705862-e0088f16f791?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
-      <div class="card-overlay">
-        <h1>Private Yacht</h1>
-        <p>Sail in ultimate luxury and privacy.</p>
-        <button>View More</button>
-      </div>
-    </div>
-    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1488747279002-c8523379faaa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
-      <div class="card-overlay">
-        <h1>Helicopter Tours</h1>
-        <p>Bird’s eye view of famous landmarks.</p>
-        <button>View More</button>
-      </div>
-    </div>
-    <div class="luxury-card" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600');">
-      <div class="card-overlay">
-        <h1>Exclusive Resorts</h1>
-        <p>Stay in the world’s finest resorts.</p>
-        <button>View More</button>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- CONTACT -->
 <section id="contact">
@@ -458,65 +484,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <!-- TESTIMONIALS -->
-<section id="testimonials">
-  <h2>What Our Clients Say</h2>
-  <div class="testimonial-cards">
-    <div class="testimonial-card">
-      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client 1">
-      <h4>Sarah Williams</h4>
-      <p>"SphinxTrail Tours made our vacation unforgettable! Excellent service and amazing guides."</p>
-    </div>
-    <div class="testimonial-card">
-      <img src="https://randomuser.me/api/portraits/men/72.jpg" alt="Client 2">
-      <h4>Michael Brown</h4>
-      <p>"Highly recommended! The tours were perfectly organized and very enjoyable."</p>
-    </div>
-    <div class="testimonial-card">
-      <img src="https://randomuser.me/api/portraits/women/78.jpg" alt="Client 3">
-      <h4>Linda Johnson</h4>
-      <p>"Fantastic experience! Luxury accommodations and great customer support."</p>
-    </div>
-  </div>
-</section>
+
 <!-- REGISTRATION WITH TRIP TYPE AND DESTINATION -->
-<section id="registration" class="registration-section">
-  <div class="registration-overlay">
-    <h2>Trip & Company Registration</h2>
-    <p>Register yourself for your preferred trip and destination with our company.</p>
-    <form id="registrationForm" class="registration-form">
-      <div class="form-row">
-        <input type="text" name="fullname" placeholder="Full Name" required>
-        <input type="email" name="email" placeholder="Email Address" required>
-      </div>
-      <div class="form-row">
-        <input type="tel" name="phone" placeholder="Phone Number" required>
-        <select name="tripType" required>
-          <option value="">Select Trip Type</option>
-          <option value="luxury">Luxury Trip</option>
-          <option value="adventure">Adventure Trip</option>
-          <option value="cultural">Cultural Trip</option>
-          <option value="custom">Custom Trip</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <select name="destination" required>
-          <option value="">Select Destination</option>
-          <option value="egypt">Egypt</option>
-          <option value="greece">Greece</option>
-          <option value="italy">Italy</option>
-          <option value="turkey">Turkey</option>
-          <option value="maldives">Maldives</option>
-        </select>
-        <input type="date" name="startDate" required>
-      </div>
-      <textarea name="notes" placeholder="Additional Notes" rows="2"></textarea>
-      <button type="submit" class="btn">Submit Registration</button>
-      <p id="registrationMessage" style="display:none; color:lightgreen; margin-top:10px;">
-        Registration submitted successfully!
-      </p>
-    </form>
-  </div>
-</section>
+
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-section">

@@ -13,6 +13,7 @@ accordionItems.forEach(item => {
 
 
 
+
 const form = document.getElementById('contactForm');
 const msg = document.getElementById('formMessage');
 
@@ -48,14 +49,7 @@ form.addEventListener('submit', function(e){
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.nav');
 
-  menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('show');
-  });
-});
 
 // ===== Registration Form JS =====
 const registrationForm = document.getElementById('registrationForm');
@@ -78,3 +72,5 @@ registrationForm.addEventListener('submit', function(e){
 
   registrationMsg.style.display = 'block';
 });
+
+
