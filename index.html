@@ -29,9 +29,10 @@
 <!-- WhatsApp & Phone Floating Buttons -->
 <div class="contact-buttons">
   <!-- WhatsApp -->
-  <a href="https://wa.me/201234567890" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
+  <a href="https://wa.me/+201040381899" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
     <!-- أيقونة واتساب الويب الرسمية بدون خلفية -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+    alt="WhatsApp" />
   </a>
 
   <!-- Phone -->
@@ -475,13 +476,42 @@ document.addEventListener("DOMContentLoaded", function () {
     <input type="email" name="email" placeholder="Your Email" required>
     <input type="tel" name="phone" placeholder="Your Phone Number" required>
     <input type="number" name="guests" placeholder="Number of Guests" min="1" required>
-    <input type="date" name="date" placeholder="Select Date" required>
+    <!-- <input type="date" name="date" placeholder="Select Date" required> -->
     <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
     <button type="submit" class="btn">Send Message</button>
     <p id="formMessage" style="display:none; color:green; margin-top:10px;">Your message has been sent successfully!</p>
   </form>
 </section>
 
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // منع إعادة تحميل الصفحة
+
+  // قراءة بيانات الفورم
+  const name = encodeURIComponent(this.name.value);
+  const email = encodeURIComponent(this.email.value);
+  const phone = encodeURIComponent(this.phone.value);
+  const guests = encodeURIComponent(this.guests.value);
+  const message = encodeURIComponent(this.message.value);
+
+  // إنشاء رسالة واتساب جاهزة
+  const whatsappMessage = `Hello!%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ANumber of Guests: ${guests}%0AMessage: ${message}`;
+
+  // رابط واتساب (غيّر الرقم برقمك)
+  const whatsappLink = `https://wa.me/+201040381899?text=${whatsappMessage}`;
+
+  // فتح واتساب في تبويب جديد
+  window.open(whatsappLink, '_blank');
+
+  // عرض رسالة نجاح على الفورم
+  const formMsg = document.getElementById('formMessage');
+  formMsg.style.display = 'block';
+  formMsg.textContent = 'تم تجهيز رسالتك! اضغط Send في واتساب لإرسالها.';
+
+  // إعادة ضبط الفورم
+  this.reset();
+});
+</script>
 
 <!-- TESTIMONIALS -->
 

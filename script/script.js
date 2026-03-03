@@ -74,3 +74,45 @@ registrationForm.addEventListener('submit', function(e){
 });
 
 
+
+const express = require('express');
+const axios = require('axios');
+const app = express();
+
+app.use(express.json());
+
+app.post('/send-whatsapp', async (req, res) => {
+  const { name, email, phone, guests, message } = req.body;
+
+  const whatsappMessage = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nGuests: ${guests}\nMessage: ${message}`;
+
+  try {
+    await axios.post('https://graph.facebook.com/v17.0/YOUR_PHONE_NUMBER_ID/messages', {
+      messaging_product: "whatsapp",
+      to: "YOUR_NUMBER",
+      text: { body: whatsappMessage }
+    }, {
+      headers: {
+        'Authorization': `Bearer YOUR_ACCESS_TOKEN`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.json({ success: false });
+  }
+});
+
+app.listen(3000, () => console.log('Server running on port 3000'));
+
+
+
+
+
+
+
+
+
+
