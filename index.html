@@ -13,7 +13,13 @@
 <!-- HEADER -->
 <header class="header">
   <div class="container">
-    <a href="#" class="logo">SphinxTrail Tours</a>
+    <div class="loge">
+       <img src="./imgse333.png">
+ <a href="#" class="logo">SphinxTrail Tours</a>
+
+    </div>
+   
+
     <div class="menu-toggle">&#9776;</div> <!-- أيقونة الهامبرجر -->
     <nav class="nav">
       <a href="#home">Home</a>
@@ -54,6 +60,7 @@
   z-index: 9999;
 }
 
+
 .contact-buttons a {
   width: 60px;
   height: 60px;
@@ -88,111 +95,126 @@
 
 /* أيقونات */
 .contact-buttons img {
-  width: 30px;
-  height: 30px;
+width: fit-content;
 }
 .contact-buttons svg {
   width: 30px;
   height: 30px;
   fill: white;
 }
+
 </style>
 
 
 
 <style>
+/* ===== Header ===== */
 .header {
-  background:#FF7F50;
-  color:#fff;
-  padding:15px 0;
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:1000;
+  background: #b9962d; /* لون الخلفية */
+  color: #fff;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .header .container {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 
+/* ===== Logo ===== */
 .header .logo {
-  font-size:24px;
-  font-weight:bold;
-  color:#fff;
-  text-decoration:none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
 }
 
-/* ===== Nav ===== */
+.loge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.loge img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+/* ===== Nav Links ===== */
 .nav {
-  display:flex;
-  gap:20px;
+  display: flex;
+  gap: 20px;
 }
 
 .nav a {
-  color:#fff;
-  text-decoration:none;
-  position:relative;
-  padding:5px 0;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  padding: 5px 0;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-/* الخط المتحرك */
+/* ===== Animated underline ===== */
 .nav a::after {
-  content:'';
-  position:absolute;
-  bottom:-4px;
-  left:50%;
-  width:100%;
-  height:2px;
-  background:#fff;
-
-  transform:translateX(-50%) scaleX(0);
-  transform-origin:center;
-  transition:transform 0.4s ease;
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s ease;
 }
 
 .nav a:hover::after {
-  transform:translateX(-50%) scaleX(1);
+  transform: translateX(-50%) scaleX(1);
 }
 
-/* ===== Hamburger ===== */
+/* ===== Hamburger Menu Icon ===== */
 .menu-toggle {
-  display:none;
-  font-size:28px;
-  cursor:pointer;
-  z-index:1001;
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 1001;
 }
 
-/* ===== Mobile ===== */
-@media(max-width:768px){
-
+/* ===== Responsive Mobile ===== */
+@media(max-width: 768px) {
   .menu-toggle {
-    display:block;
+    display: block;
   }
 
   .nav {
-    display:none;
-    flex-direction:column;
-    width:100%;
-    background:#FF7F50;
-    text-align:center;
-    padding:10px 0;
-    position:absolute;
-    top:100%;
-    left:0;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #ba9830;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
   }
 
   .nav.show {
-    display:flex;
+    display: flex;
   }
 
   .nav a {
-    display:inline-block; /* مهم جدًا عشان الخط يبقى قد الكلام */
-    padding:10px 0;
-    font-size:18px;
-    font-weight:bold;
+    display: inline-block; /* مهم جدًا عشان الخط يظهر */
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
   }
 }
 </style>
@@ -248,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- HERO -->
 <section class="history-hero">
   <video autoplay muted loop playsinline class="hero-video">
-    <source src="./WhatsApp Video.mp4" type="video/mp4">
+    <source src="./WhatsApp Videoimg8.mp4" type="video/mp4">
   </video>
 
   <div class="overlay"></div>
@@ -271,43 +293,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <div class="tours">
     <div class="card">
-<img src="https://images.pexels.com/photos/10928747/pexels-photo-10928747.jpeg?auto=compress&cs=tinysrgb&w=400"onclick="toggleDetail(this)">
+<img src="./img1.jpg"onclick="toggleDetail(this)">
       <div class="overlay">
-        <h2>Pyramids of Giza</h2>
-        <p>Visit the iconic Giza pyramids, one of the most famous ancient wonders in the world..</p>
+       <h2>The Pyramids of Giza</h2>
+<p>
+The Pyramids of Giza are among the most famous and breathtaking monuments in the world. 
+Located on the Giza Plateau near Cairo, Egypt, these ancient structures were built more than 4,500 years ago during the reign of the pharaohs. 
+The Great Pyramid of Khufu is the largest and oldest of the three pyramids and is considered one of the Seven Wonders of the Ancient World. 
+The pyramids reflect the incredible architectural skills and engineering knowledge of ancient Egyptian civilization and continue to attract millions of visitors every year.
+</p>
      <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
       </div>
     </div>
 
     <div class="card">
- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzp1G7HVfCDpUtzGFEVzX5tksCPwdHKttKgw&s"onclick="toggleDetail(this)">
+ <img src="./image1.png"onclick="toggleDetail(this)">
       <div class="overlay">
-        <h2>Luxor Temple</h2>
-        <p>Explore the majestic Luxor Temple, rich in ancient Egyptian history. in ancient Egyptian history..</p>
-      <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
+<h2>Luxor Temple</h2>
+<p>
+Luxor Temple is one of the most magnificent ancient temples in Egypt, located on the east bank of the Nile River in Luxor. 
+Built mainly during the reign of Pharaoh Amenhotep III and later expanded by Ramses II, the temple was dedicated to the rejuvenation of kingship and the worship of the god Amun. 
+With its grand entrance, massive statues, towering columns, and beautifully carved hieroglyphics, Luxor Temple reflects the power and artistic brilliance of ancient Egyptian civilization. 
+Today, it stands as a remarkable symbol of Egypt’s rich history and attracts visitors from all over the world.
+</p>
+        <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
 
       </div>
     </div>
 
    
          <div class="card">
-<img src="data:image/jpeg;base64,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" alt="ww" onclick="toggleDetail(this)">
+<img src="./img2.jpg" alt="Karnak Temple"onclick="toggleDetail(this)">
 <div class="overlay">
-            <h2>Karnak Temple</h2>
-      <p>Discover the huge Karnak complex with its towering columns and ancient carvings.</p>
-        <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
+<h2>Karnak Temple Complex</h2>
+<p>
+Karnak Temple Complex is one of the largest and most impressive religious sites ever built in the ancient world. 
+Located in Luxor, Egypt, it was developed over more than 2,000 years by successive pharaohs. 
+The complex was primarily dedicated to the god Amun-Ra and includes massive temples, towering obelisks, sacred lakes, and the famous Great Hypostyle Hall with its gigantic columns. 
+Karnak reflects the power, devotion, and architectural genius of ancient Egyptian civilization and remains one of Egypt’s most extraordinary historical landmarks.
+</p>
+      <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
        
       </div>
     </div>
        <div class="card">
 
- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5DX3r5w5BOaVQGpOz
- RowN7zhKM8dWSUk7WA&s" alt="Great Sphinx & Pyramid"   onclick="toggleDetail(this)">
+ <img src="./img3.jpg"   onclick="toggleDetail(this)">
       <div class="overlay">
 
-      <h2>Sphinx & Pyramids</h2>
-      <p>See the Great Sphinx and pyramids standing together as symbols of ancient Egypt.</p>
-  <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
+<h2>The Great Sphinx of Giza</h2>
+<p>
+The Great Sphinx of Giza is one of the most iconic monuments of ancient Egypt. 
+Located near the Pyramids of Giza, this massive limestone statue features the body of a lion and the head of a pharaoh, believed to represent King Khafre. 
+Built around 2500 BCE, the Sphinx symbolizes strength, wisdom, and protection. 
+Despite centuries of erosion and mystery surrounding its history, the Great Sphinx remains a powerful symbol of Egypt’s ancient civilization and continues to fascinate visitors from around the world.
+</p>
+      <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
 
     </div>
        </div>
@@ -315,27 +356,34 @@ document.addEventListener("DOMContentLoaded", function () {
            <div class="card">
       <div class="overlay">
         
-      <img src="./WhatsApp Image.jpeg"
+      <img src="./img4.jpeg"
 
   
       onclick="toggleDetail(this)">
      
 <h2>The Grand Egyptian Museum</h2>
-
-
-<p>The Grand Egyptian Museum (GEM) is one of the largest archaeological museums in the world, located near the Pyramids of Giza. It showcases Egypt's rich history and houses thousands of ancient artifacts, including the treasures of Tutankhamun.</p>
-
+<p>
+The Grand Egyptian Museum is one of the largest archaeological museums in the world, located near the Pyramids of Giza in Egypt. 
+It houses thousands of ancient artifacts, including the complete collection of King Tutankhamun’s treasures displayed together for the first time. 
+The museum combines modern architectural design with advanced technology to present Egypt’s rich history in an innovative and engaging way. 
+As a cultural landmark, the Grand Egyptian Museum offers visitors a unique journey through thousands of years of ancient Egyptian civilization.
+</p>
 <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
       </div>
     </div>
 
                <div class="card">
       <div class="overlay">
-        <img  src="data:image/jpeg;base64,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"
- alt="Great Sphinx & Pyramid"   onclick="toggleDetail(this)">
-  <h2>Citadel of Salah El-Din</h2>
-        <p>A historic Islamic fortification in Cairo, built for defense and famous for its grand mosques and panoramic city views.</p>
-       <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
+<img src="./img5.jpg"
+ lt="Great Sphinx & Pyramid"   onclick="toggleDetail(this)">
+<h2>Citadel of Salah El-Din</h2>
+<p>
+The Citadel of Salah El-Din is a historic Islamic fortress located in Cairo, Egypt. 
+Built in the 12th century by Salah El-Din (Saladin), it was constructed to protect the city from Crusader attacks. 
+The citadel served as the seat of government for many centuries and includes several important landmarks, most notably the Mosque of Muhammad Ali. 
+With its impressive architecture and panoramic views of Cairo, the Citadel remains one of the city’s most remarkable historical and cultural attractions.
+</p>
+        <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
       </div>
     </div>
 
@@ -343,23 +391,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 <div class="card">
       <div class="overlay">
-      <img src="https://i.ytimg.com/vi/nhDRwIOtFs8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBk4SjW8GC7fUUhvqOdPziudMi6zQ"  alt="ww"   onclick="toggleDetail(this)">
+     
+        <img src="./img6.jpg"  alt="ww"   onclick="toggleDetail(this)">
 
-   <h2>St. Catherine Monastery</h2>
-    <p>Explore the historic St. Catherine Monastery, located at the foot of Mount Sinai, famous for its ancient architecture and religious significance.</p>
-      <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
+<h2>Qaitbay Citadel</h2>
+<p>
+Qaitbay Citadel is a historic fortress located on the Mediterranean coast in Alexandria, Egypt. 
+Built in the 15th century by Sultan Al-Ashraf Qaitbay, the citadel was constructed to protect the city from naval invasions. 
+It stands on the exact site of the ancient Lighthouse of Alexandria, one of the Seven Wonders of the Ancient World. 
+With its strong stone walls and stunning sea views, Qaitbay Citadel is one of Alexandria’s most famous landmarks and a symbol of Egypt’s rich maritime history.
+</p>
+
+    <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
       </div>
     </div>
 
            <div class="card">
       <div class="overlay">
- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMeOdF9rQ3Bf8EWLKtMNhHYScHqE8bkIVS6Q&s"
+ <img src="./img7.jpg"
       alt="Great Sphinx & Pyramid" onclick="toggleDetail(this)">
    
-<h2>Egyptian Museum</h2>
-
-        <p>The Egyptian Museum in Cairo houses the world's largest collection of Pharaonic antiquities, including Tutankhamun's treasures.</p>
-       <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
+<h2>Egyptian Museum, Cairo</h2>
+<p>
+The Egyptian Museum in Cairo is one of the most famous museums in the world, housing an extensive collection of ancient Egyptian artifacts. 
+Located in Tahrir Square, it displays treasures from pharaonic Egypt, including the complete collection of King Tutankhamun’s artifacts. 
+The museum offers a unique glimpse into thousands of years of Egyptian history, showcasing statues, jewelry, mummies, and priceless relics. 
+It remains a must-visit destination for anyone interested in the richness and legacy of ancient Egyptian civilization.
+</p>
+        <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
       </div>
     </div>
 
@@ -493,7 +552,7 @@ function closeDetail(btn){
       <div class="heritage-card">
 
 
-<img class="card-image" style="background-image: url('script/images.jpg');">
+<img class="card-image" style="background-image: url('./img1.jpg');">
  
        <div class="card-content">
           <h3>Giza Pyramids</h3>
@@ -506,7 +565,7 @@ function closeDetail(btn){
       <!-- Card 2 -->
       <div class="heritage-card">
 
-<img class="card-image" style="background-image: url('script/Untitled1.jpg');">
+<img class="card-image" style="background-image: url('./imgs1.jpg');">
 
         <div class="card-content">
           <h3>Karnak Temple</h3>
@@ -517,7 +576,7 @@ function closeDetail(btn){
 
       <!-- Card 3 -->
       <div class="heritage-card">
-<img class="card-image" style="background-image: url('script/img1.jpg');">
+<img class="card-image" style="background-image: url('./imgs2.jpg');">
 
 <div class="card-content">
 
@@ -529,7 +588,7 @@ function closeDetail(btn){
 
       <!-- Card 4 -->
       <div class="heritage-card">
-<img class="card-image" style="background-image: url('script/images2.jpg');">
+<img class="card-image" style="background-image: url('./img2.jpg');">
 
 <div class="card-content">
           <h3>Luxor Temple</h3>
@@ -541,7 +600,7 @@ function closeDetail(btn){
       <!-- Card 5 -->
       <div class="heritage-card">
        
-<img class="card-image" style="background-image: url('script/img2.jpg');">
+<img class="card-image" style="background-image: url('./imgs3.jpg');">
 
 <div class="card-content">
           <h3>Hatshepsut Temple</h3>
@@ -553,7 +612,7 @@ function closeDetail(btn){
       <!-- Card 6 -->
       <div class="heritage-card">
        
-<img class="card-image" style="background-image: url('script/img3.jpg');">
+<img class="card-image" style="background-image: url('./imgs4.jpg');">
 
 <div class="card-content">
           <h3>Philae Temple</h3>
@@ -657,8 +716,9 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
       </div>
     </div>
   </div>
-  <p class="footer-copy">&copy; © 2026 SphinxTrail Tours. All Rights Reserved.
-Designed by GMT WEB</p>
+  <a href="https://www.facebook.com/share/1BBjLrnxnj/"  
+   class="footer-copy" >&copy; 2026 SphinxTrail Tours. All Rights Reserved.
+Designed by GMT WEB</a>
 </footer>
 
 
