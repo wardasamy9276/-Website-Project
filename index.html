@@ -62,136 +62,7 @@ function closeModal() {
     </nav>
   </div>
 </header>
-<style>
-/* ===== Header ===== */
-.header {
-  background: #b9962d; /* لون الخلفية */
-  color: #fff;
 
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
-
-/* ===== Logo ===== */
-.header .logo {
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-   color: #111;
-}
-@media(max-width: 768px) {
-  .header .logo  {
-font-size: 16px;
-  }
-}
-
-
-
-.logo:hover{
-  color: #fff;
-}
-.loge {
- display: flex;
- justify-content:space-between;
- align-items: center;
- gap:10px;
-}
-
-.loge img {
-
-  width: 50px;
-height: 50px;
-border-radius: 50%;
-
-
-
-}
-
-
-/* ===== Nav Links ===== */
-.nav {
-  display: flex;
-  gap: 20px;
-}
-
-.nav a {
-  color: #fff;
-  text-decoration: none;
-  position: relative;
-  padding: 5px 0;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-/* ===== Animated underline ===== */
-.nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  width: 100%;
-  height: 2px;
-  background: #fff;
-  transform: translateX(-50%) scaleX(0);
-  transform-origin: center;
-  transition: transform 0.4s ease;
-}
-
-.nav a:hover::after {
-  transform: translateX(-50%) scaleX(1);
-}
-
-/* ===== Hamburger Menu Icon ===== */
-.menu-toggle {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-/* ===== Responsive Mobile ===== */
-@media(max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: #ba9830;
-    text-align: center;
-    padding: 10px 0;
-    position: absolute;
-    top: 100%;
-    left: 0;
-  }
-
-  .nav.show {
-    display: flex;
-  }
-
-  .nav a {
-    display: inline-block; /* مهم جدًا عشان الخط يظهر */
-    padding: 10px 0;
-    font-size: 15px;
-    font-weight: bold;
-  }
-
-  .loge img{
-    display: none;
-  }
-}
-</style>
 <!-- WhatsApp & Phone Floating Buttons -->
 <div class="contact-buttons">
   <!-- WhatsApp -->
@@ -262,58 +133,6 @@ border-radius: 50%;
 }
 
 </style>
-
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  const menuToggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav");
-  const navLinks = document.querySelectorAll(".nav a");
-  const header = document.querySelector(".header");
-
-  // فتح وقفل المنيو
-  menuToggle.addEventListener("click", function () {
-    nav.classList.toggle("show");
-
-    if (nav.classList.contains("show")) {
-      menuToggle.innerHTML = "✖";
-    } else {
-      menuToggle.innerHTML = "&#9776;";
-    }
-  });
-
-  // لما أضغط على لينك
-  navLinks.forEach(function (link) {
-    link.addEventListener("click", function (e) {
-
-      e.preventDefault(); // نوقف السلوك الافتراضي
-
-      const targetId = this.getAttribute("href");
-      const targetSection = document.querySelector(targetId);
-
-      if (targetSection) {
-        const headerHeight = header.offsetHeight;
-        const sectionPosition = targetSection.offsetTop - headerHeight;
-
-        window.scrollTo({
-          top: sectionPosition,
-          behavior: "smooth"
-        });
-      }
-
-      // نقفل المنيو
-      nav.classList.remove("show");
-      menuToggle.innerHTML = "&#9776;";
-    });
-  });
-
-});
-</script>
-
-
 
 <!-- HERO -->
 <section class="history-hero">
@@ -508,8 +327,6 @@ function closeDetail(btn){
 </section>
 
 <!-- GALLERY -->
-
-
 <!-- TEAM -->
 <section id="testimonials">
   <h2>What Our Clients Say</h2>
@@ -537,12 +354,6 @@ function closeDetail(btn){
       <p>"A luxurious experience on the Nile. The food, staff, and scenery were all top-notch. Can't wait to come back!"</p>
     </div>
 
-    <div class="testimonial-card">
-      <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Client Photo">
-      <h4>Mahmoud Adel</h4>
-      <p>Karnak & Luxor Tour</p>
-      <p>"Exploring Luxor and Karnak temples was amazing. The guide gave so much insight into Egyptian history."</p>
-    </div>
 
   </div>
 </section>
@@ -590,9 +401,6 @@ function closeDetail(btn){
     <p>Our tours are available in English, Arabic, and other languages on request.</p>
   </div>
 </section>
-
-
-
 
   <section class="heritage-section">
     <h2 class="section-title">Heritage Sites</h2>
@@ -689,8 +497,6 @@ function closeDetail(btn){
     </div>
   </section>
 
-
-
 <!-- CONTACT -->
 <section id="contact">
   <h2>Contact Us</h2>
@@ -706,35 +512,7 @@ function closeDetail(btn){
   </form>
 </section>
 
-<script>
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault(); // منع إعادة تحميل الصفحة
 
-  // قراءة بيانات الفورم
-  const name = encodeURIComponent(this.name.value);
-  const email = encodeURIComponent(this.email.value);
-  const phone = encodeURIComponent(this.phone.value);
-  const guests = encodeURIComponent(this.guests.value);
-  const message = encodeURIComponent(this.message.value);
-
-  // إنشاء رسالة واتساب جاهزة
-  const whatsappMessage = `Hello!%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ANumber of Guests: ${guests}%0AMessage: ${message}`;
-
-  // رابط واتساب (غيّر الرقم برقمك)
-  const whatsappLink = `https://wa.me/+201040381899?text=${whatsappMessage}`;
-
-  // فتح واتساب في تبويب جديد
-  window.open(whatsappLink, '_blank');
-
-  // عرض رسالة نجاح على الفورم
-  const formMsg = document.getElementById('formMessage');
-  formMsg.style.display = 'block';
-  formMsg.textContent = 'تم تجهيز رسالتك! اضغط Send في واتساب لإرسالها.';
-
-  // إعادة ضبط الفورم
-  this.reset();
-});
-</script>
 
 <!-- TESTIMONIALS -->
 
@@ -783,52 +561,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 Designed by GMT WEB</a>
 </footer>
 
-
-
-
-
-<script>
-  // اختر كل روابط الـ navbar
-  const navLinks = document.querySelectorAll('.nav a');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e){
-      e.preventDefault(); // يمنع الريفريش
-      const targetId = this.getAttribute('href'); // يأخذ الـ ID اللي هتوديه
-      if(targetId.startsWith('#')){
-        const section = document.querySelector(targetId);
-        if(section){
-          section.scrollIntoView({ behavior: 'smooth' }); // سكرول سلس للجزء المطلوب
-        }
-      }
-    });
-  });
-  document.addEventListener('DOMContentLoaded', () => {
-  const accordionItems = document.querySelectorAll('.accordion-item');
-
-  accordionItems.forEach(item => {
-    const header = item.querySelector('h3');
-
-    header.addEventListener('click', () => {
-      // لو العنصر نفسه مفتوح، نقلبه
-      const isActive = item.classList.contains('active');
-
-      // قفل كل العناصر
-      accordionItems.forEach(i => i.classList.remove('active'));
-
-      // لو كان مش مفتوح قبل كده، افتحه
-      if (!isActive) {
-        item.classList.add('active');
-      }
-    });
-  });
-});
-
-
-
-
-  
-</script>
+<script src=  "script/script.js"></script>
 
 
 </body>
