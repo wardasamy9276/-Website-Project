@@ -7,6 +7,36 @@
 <link rel="stylesheet" href="style/style.css">
 
 </head>
+<!-- Modal -->
+<!-- Modal -->
+<div id="imageModal" class="modal">
+  <div class="modal-box">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <img id="modalImg">
+  </div>
+</div>
+
+<script>
+function openModal(src) {
+  document.getElementById("imageModal").style.display = "flex";
+  document.getElementById("modalImg").src = src;
+}
+
+function closeModal() {
+  document.getElementById("imageModal").style.display = "none";
+}
+</script>
+
+<script>
+function openModal(src) {
+  document.getElementById("imageModal").style.display = "flex";
+  document.getElementById("modalImg").src = src;
+}
+
+function closeModal() {
+  document.getElementById("imageModal").style.display = "none";
+}
+</script>
 <body>
 
 <!-- HEADER -->
@@ -14,8 +44,8 @@
 <header class="header">
   <div class="container">
     <div class="loge">
-       <img src="./imgse333.png">
- <a href="#" class="logo">SphinxTrail Tours</a>
+       <img src="./imgggg1.jpeg" alt="imgggg1">
+ <h5 class="logo">SphinxTrail Tours</h5>
 
     </div>
    
@@ -32,81 +62,6 @@
     </nav>
   </div>
 </header>
-<!-- WhatsApp & Phone Floating Buttons -->
-<div class="contact-buttons">
-  <!-- WhatsApp -->
-  <a href="https://wa.me/+201125390934" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
-    <!-- أيقونة واتساب الويب الرسمية بدون خلفية -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-    alt="WhatsApp" />
-  </a>
-
-  <!-- Phone -->
-  <a href="tel:+201125390934" class="phone-btn" title="Call Us">
-    <svg width="30" height="30" viewBox="0 0 512 512" fill="white" xmlns="http://www.w3.org/2000/svg">
-      <path d="M511.1 387.7l-23.6-99.3c-3.1-12.9-14.1-21.8-27.2-22.8l-104-8c-13.5-1-25.1 8.4-28.4 21.6l-19 74.2c-39.2-20.9-71.5-53.1-92.4-92.4l74.2-19c13.2-3.3 22.6-14.9 21.6-28.4l-8-104c-1-13.1-9.9-24.1-22.8-27.2L124.3 .9C110.6-2.1 95.2 2.5 86.1 13.8l-46.1 55c-16.2 19.4-17.6 48.2-3.5 69.2 62.3 94.4 163.4 195.5 257.8 257.8 21 14.1 49.8 12.7 69.2-3.5l55-46.1c11.3-9.1 15.9-24.5 12.9-38.2z"/>
-    </svg>
-  </a>
-</div>
-
-<style>
-.contact-buttons {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  z-index: 9999;
-}
-
-
-.contact-buttons a {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  cursor: pointer;
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-/* زر واتساب */
-.contact-buttons a.whatsapp-btn {
-  background-color: #25D366; /* أخضر واتساب */
-}
-
-.contact-buttons a.whatsapp-btn:hover {
-  transform: scale(1.1);
-  background-color: #1ebe57;
-}
-
-/* زر الهاتف */
-.contact-buttons a.phone-btn {
-  background-color: #0077B5;
-}
-
-.contact-buttons a.phone-btn:hover {
-  transform: scale(1.1);
-  background-color: #005f8e;
-}
-
-/* أيقونات */
-.contact-buttons img {
-width: fit-content;
-}
-.contact-buttons svg {
-  width: 30px;
-  height: 30px;
-  fill: white;
-}
-
-</style>
-
-
-
 <style>
 /* ===== Header ===== */
 .header {
@@ -128,24 +83,39 @@ width: fit-content;
 
 /* ===== Logo ===== */
 .header .logo {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  color: #fff;
   text-decoration: none;
+   color: #111;
+}
+@media(max-width: 768px) {
+  .header .logo  {
+font-size: 16px;
+  }
 }
 
+
+
+.logo:hover{
+  color: #fff;
+}
 .loge {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+ display: flex;
+ justify-content:space-between;
+ align-items: center;
+ gap:10px;
 }
 
 .loge img {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
+
+  width: 50px;
+height: 50px;
+border-radius: 50%;
+
+
+
 }
+
 
 /* ===== Nav Links ===== */
 .nav {
@@ -213,11 +183,89 @@ width: fit-content;
   .nav a {
     display: inline-block; /* مهم جدًا عشان الخط يظهر */
     padding: 10px 0;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
+  }
+
+  .loge img{
+    display: none;
   }
 }
 </style>
+<!-- WhatsApp & Phone Floating Buttons -->
+<div class="contact-buttons">
+  <!-- WhatsApp -->
+  <a href="https://wa.me/+201125390934" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
+    <!-- أيقونة واتساب الويب الرسمية بدون خلفية -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+    alt="WhatsApp" />
+  </a>
+
+  <!-- Phone -->
+  <a href="tel:+201125390934" class="phone-btn" title="Call Us">
+    <svg width="30" height="30" viewBox="0 0 512 512" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M511.1 387.7l-23.6-99.3c-3.1-12.9-14.1-21.8-27.2-22.8l-104-8c-13.5-1-25.1 8.4-28.4 21.6l-19 74.2c-39.2-20.9-71.5-53.1-92.4-92.4l74.2-19c13.2-3.3 22.6-14.9 21.6-28.4l-8-104c-1-13.1-9.9-24.1-22.8-27.2L124.3 .9C110.6-2.1 95.2 2.5 86.1 13.8l-46.1 55c-16.2 19.4-17.6 48.2-3.5 69.2 62.3 94.4 163.4 195.5 257.8 257.8 21 14.1 49.8 12.7 69.2-3.5l55-46.1c11.3-9.1 15.9-24.5 12.9-38.2z"/>
+    </svg>
+  </a>
+</div>
+
+<style>
+.contact-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 9999;
+}
+
+
+.contact-buttons a {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+/* زر واتساب */
+.contact-buttons a.whatsapp-btn {
+  background-color: #25D366; /* أخضر واتساب */
+}
+
+.contact-buttons a.whatsapp-btn:hover {
+  transform: scale(1.1);
+  background-color: #1ebe57;
+}
+
+/* زر الهاتف */
+.contact-buttons a.phone-btn {
+  background-color: #0077B5;
+}
+
+.contact-buttons a.phone-btn:hover {
+  transform: scale(1.1);
+  background-color: #005f8e;
+}
+
+/* أيقونات */
+
+.contact-buttons svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+
+</style>
+
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -472,6 +520,7 @@ function closeDetail(btn){
       <h4>Amira Hassan</h4>
       <p>Egypt Pyramids Tour</p>
       <p>"The guide was amazing, and the pyramids were breathtaking! Highly recommend this tour for anyone visiting Egypt."</p>
+    
     </div>
 
     <div class="testimonial-card">
@@ -558,8 +607,11 @@ function closeDetail(btn){
           <h3>Giza Pyramids</h3>
           <p>The Pyramids of Giza are one of the ancient wonders of the world and a UNESCO Woظ
             rld Heritage site.</p>
-          <a href="https://upload.wikimedia.org/wikipedia/commons/6/6b/Pyramids_of_Giza,_Egypt_-_July_2006.jpg" target="_blank" class="card-link">View Image</a>
-        </div>
+          
+<a href="#" class="card-link" onclick="openModal('./img1.jpg'); return false;">
+  View Image
+</a>
+          </div>
       </div>
 
       <!-- Card 2 -->
@@ -570,7 +622,10 @@ function closeDetail(btn){
         <div class="card-content">
           <h3>Karnak Temple</h3>
           <p>Karnak Temple is one of the largest religious complexes in ancient Egypt.</p>
-          <a href="https://upload.wikimedia.org/wikipedia/commons/5/5c/Karnak_Temple.jpg" target="_blank" class="card-link">View Image</a>
+  
+          <a href="#" class="card-link" onclick="openModal('./imgs1.jpg'); return false;">
+  View Image
+</a>
         </div>
       </div>
 
@@ -582,7 +637,9 @@ function closeDetail(btn){
 
           <h3>Abu Simbel</h3>
           <p>The Abu Simbel temples are rock-cut monuments famous for the statues of Ramses II.</p>
-          <a href="https://upload.wikimedia.org/wikipedia/commons/d/d4/Abu_Simbel_Temple.jpg" target="_blank" class="card-link">View Image</a>
+<a href="#" class="card-link" onclick="openModal('./imgs2.jpg'); return false;">
+  View Image
+</a>
         </div>
       </div>
 
@@ -593,7 +650,9 @@ function closeDetail(btn){
 <div class="card-content">
           <h3>Luxor Temple</h3>
           <p>Luxor Temple is a historic landmark on the banks of the Nile.</p>
-          <a href="https://upload.wikimedia.org/wikipedia/commons/0/03/Luxor_Temple.jpg" target="_blank" class="card-link">View Image</a>
+<a href="#" class="card-link" onclick="openModal('./img2.jpg'); return false;">
+  View Image
+</a>
         </div>
       </div>
 
@@ -605,7 +664,9 @@ function closeDetail(btn){
 <div class="card-content">
           <h3>Hatshepsut Temple</h3>
           <p>Magnificent temple carved into the cliff in memory of Queen Hatshepsut.</p>
-          <a href="https://upload.wikimedia.org/wikipedia/commons/e/eb/Temple_of_Hatshepsut.jpg" target="_blank" class="card-link">View Image</a>
+<a href="#" class="card-link" onclick="openModal('./imgs3.jpg'); return false;">
+  View Image
+</a>
         </div>
       </div>
 
@@ -617,7 +678,9 @@ function closeDetail(btn){
 <div class="card-content">
           <h3>Philae Temple</h3>
           <p>The Temple of Isis in Philae Island is an important tourist attraction.</p>
-          <a href="https://upload.wikimedia.org/wikipedia/commons/8/84/Philae_Temple.jpg" target="_blank" class="card-link">View Image</a>
+<a href="#" class="card-link" onclick="openModal('./imgs4.jpg'); return false;">
+  View Image
+</a>
         </div>
       </div>
 
@@ -625,8 +688,7 @@ function closeDetail(btn){
     
     </div>
   </section>
-</body>
-</html>
+
 
 
 <!-- CONTACT -->
